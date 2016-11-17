@@ -13,5 +13,5 @@ void Rogue::attack(Unit& enemy) {
         // throw DeadAttackException("ERROR: zombie attack");
     }
     
-    enemy->takeDamage(this->getPhysDmg(), 0);
+    enemy.takeDamage(this->getPhysDmg(), 0);
 }
