@@ -2,7 +2,7 @@
 #define SOLDIER_H
 
 #include <iostream>
-#include "../unit/Unit.h"
+#include "Unit.h"
 
 class Soldier : public Unit {
     public:
