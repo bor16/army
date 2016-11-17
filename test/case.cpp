@@ -1,11 +1,13 @@
 #include "../state/State.h"
 #include "../unit/Unit.h"
 #include "../unit/Soldier.h"
+#include "../unit/Rogue.h"
 #include "catch.hpp"
 
 TEST_CASE("test Unit", "[Unit]") {
-    Soldier* sol = new Soldier("John", "Soldier", 100, 10);
-    Soldier* sol2 = new Soldier("Smith", "Soldier", 100, 10);
+    Soldier* sol = new Soldier("John");
+    Soldier* sol2 = new Soldier("Smith");
+    Rogue* rog = new Rogue("Black");
     
     REQUIRE( sol->getName() == "John" );
     REQUIRE( sol2->getUnitClass() == "Soldier" );
@@ -20,6 +22,14 @@ TEST_CASE("test Unit", "[Unit]") {
         REQUIRE( sol2->getHp() == 90 );
     }
     
+    SECTION("Unit: rogue attack") {
+        rog->attack(*sol);
+        
+        REQUIRE (sol->getHp() == 87);
+        REQUIRE (rog->getHp() == 60);
+    }
+    
     delete sol;
     delete sol2;
+    delete rog;
 }
