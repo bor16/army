@@ -25,7 +25,7 @@ TEST_CASE("test Unit", "[Unit]") {
     SECTION("Unit: rogue attack") {
         rog->attack(*sol);
         
-        REQUIRE (sol->getHp() == 87);
+        REQUIRE (sol->getHp() == 92);
         REQUIRE (rog->getHp() == 60);
     }
     
