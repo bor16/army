@@ -1,25 +1,17 @@
-all: battle.out
+CC=g++
+CFLAGS=-c -std=c++11
 
-battle.out: obj/battle.o obj/case.o obj/State.o obj/Unit.o obj/Soldier.o obj/Rogue.o
-	g++ obj/*.o -o battle.out
+SOURCES=$(wildcard */*.cpp)
+OBJECTS=$(SOURCES:.cpp=.o)
+EXEC=battle.out
 
-obj/battle.o: test/battle.cpp
-	g++ -c -std=c++11 $< -o $@
+all: $(EXEC)
 
-obj/case.o: test/case.cpp
-	g++ -c -std=c++11 $< -o $@
+$(EXEC): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(EXEC)
 
-obj/State.o: state/State.cpp
-	g++ -c -std=c++11 $< -o $@
-
-obj/Unit.o: unit/Unit.cpp
-	g++ -c -std=c++11 $< -o $@
-
-obj/Soldier.o: unit/Soldier.cpp
-	g++ -c -std=c++11 $< -o $@
-	
-obj/Rogue.o: unit/Rogue.cpp
-	g++ -c -std=c++11 $< -o $@
+%.o: %.cpp
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -fv obj/*.o battle.out
+	rm -fv $(OBJECTS)
