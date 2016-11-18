@@ -15,3 +15,6 @@ $(EXEC): $(OBJECTS)
 
 clean:
 	rm -fv $(OBJECTS)
+
+purge:
+	find . -type f \( -name '*.o' -o -name '*.out' \) -exec rm -fv {} \;
