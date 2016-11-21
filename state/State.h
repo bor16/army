@@ -7,25 +7,22 @@ class State {
     protected:
         int hp;
         int maxHp;
-        int physDmg;
+        int damage;
         
-        bool isWerewolf;
-        bool isVampire;
+        void calcHp(int points);
         
     public:
-        State(int maxHp, int physDmg);
+        State(int maxHp, int damage);
         virtual ~State();
-        
-        void setHp(int points);
         
         const int getHp() const;
         const int getMaxHp() const;
-        const int getPhysDmg() const;
-        const bool werewolf() const;
-        const bool vampire() const;
+        const int getDamage() const;
         
-        void becomeWerewolf();
-        void becomeVampire();
+        void ensureIsAlive();
+        
+        virtual void takeDamage(int damage);
+        virtual void restoreHp(int points);
 };
 
 std::ostream& operator<<(std::ostream& out, const State& state);
