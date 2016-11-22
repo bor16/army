@@ -1,25 +1,9 @@
 #include "Unit.h"
 
-Unit::Unit(const std::string& name, const std::string& unitClass, int maxHp, int physDmg) : state(new State(maxHp, physDmg)), name(name), unitClass(unitClass) {
-    std::cout << "***Unit***" << std::endl;
-}
+Unit::Unit(const std::string& name, const std::string& unitClass, int maxHp, int damage) : state(new State(name, unitClass, maxHp, damage)) {}
 
 Unit::~Unit() {
     delete state;
-    std::cout << "~~~Unit~~~" << std::endl;
-}
-
-void Unit::setHp(int physPts, int magPts) {
-    int points = this->getHp() + physPts + magPts;
-    
-    if ( points > this->getMaxHp() ) {
-        points = this->getMaxHp();
-    }
-    if ( points <= 0 ) {
-        points = 0;
-    }
-    
-    state->setHp(points);
 }
 
 const State& Unit::getState() const {
@@ -31,40 +15,17 @@ const int Unit::getHp() const {
 const int Unit::getMaxHp() const {
     return state->getMaxHp();
 }
-const int Unit::getPhysDmg() const {
-    return state->getPhysDmg();
+const int Unit::getDamage() const {
+    return state->getDamage();
 }
 const std::string& Unit::getName() const {
-    return this->name;
+    return state->getName();
 }
 const std::string& Unit::getUnitClass() const {
-    return this->unitClass;
-}
-
-const bool Unit::dead() const {
-    return this->getHp() == 0;
-}
-const bool Unit::werewolf() const {
-    return state->werewolf();
-}
-const bool Unit::vampire() const {
-    return state->vampire();
-}
-
-void Unit::becomeWerewolf() {
-    if (!vampire()) {
-        state->becomeWerewolf();
-    }
-}
-void Unit::becomeVampire() {
-    if (!werewolf()) {
-        state->becomeVampire();
-    }
+    return state->getUnitClass();
 }
 
 std::ostream& operator<<(std::ostream& out, const Unit& unit) {
-    out << unit.getName() << " the " << unit.getUnitClass() << ": ";
     out << unit.getState();
-    
     return out;
 }
