@@ -1,6 +1,6 @@
 #include "State.h"
 
-State::State(int maxHp, int damage) : hp(maxHp), maxHp(maxHp), damage(damage) {}
+State::State(const std::string& name, const std::string& unitClass, int maxHp, int damage) : name(name), unitClass(unitClass), hp(maxHp), maxHp(maxHp), damage(damage) {}
 
 State::~State() {}
 
@@ -24,6 +24,12 @@ const int State::getMaxHp() const {
 const int State::getDamage() const {
     return this->damage;
 }
+const std::string& State::getName() const {
+    return this->name;
+}
+const std::string& State::getUnitClass() const {
+    return this->unitClass;
+}
 
 void State::ensureIsAlive() {
     if ( this->hp == 0 ) {
@@ -42,8 +48,8 @@ void State::restoreHp(int points) {
 }
 
 std::ostream& operator<<(std::ostream& out, const State& state) {
+    out << state.getName() << " the " << state.getUnitClass() << ": ";
     out << "hp(" << state.getHp() << "/" << state.getMaxHp() << "), ";
     out << "damage(" << state.getDamage() << ")";
-    
     return out;
 }

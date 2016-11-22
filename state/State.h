@@ -8,16 +8,20 @@ class State {
         int hp;
         int maxHp;
         int damage;
+        std::string name;
+        std::string unitClass;
         
         void calcHp(int points);
         
     public:
-        State(int maxHp, int damage);
+        State(const std::string& name, const std::string& unitClass, int maxHp, int damage);
         virtual ~State();
         
         const int getHp() const;
         const int getMaxHp() const;
         const int getDamage() const;
+        const std::string& getName() const;
+        const std::string& getUnitClass() const;
         
         void ensureIsAlive();
         
