@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "../state/State.h"
-// #include "../state/WerewolfState.h"
+#include "../state/WerewolfState.h"
 
 class Unit {
     protected:
@@ -20,8 +20,8 @@ class Unit {
         const std::string& getName() const;
         const std::string& getUnitClass() const;
         
-        // virtual void attack(Unit& enemy) = 0;
-        // virtual void counterAttack(Unit& enemy) = 0;
+        virtual void attack(Unit& enemy) = 0;
+        virtual void counterAttack(Unit& enemy) = 0;
 };
 
 std::ostream& operator<<(std::ostream& out, const Unit& unit);
