@@ -1,37 +1,19 @@
 #include "Soldier.h"
 
-Soldier::Soldier(const std::string& name, const std::string& unitClass, int maxHp, int physDmg) : Unit(name, unitClass, maxHp, physDmg) {
-    std::cout << "***" << this->name << " the " << this->unitClass << "___" << std::endl;
-}
+Soldier::Soldier(const std::string& name, const std::string& unitClass, int maxHp, int damage) : Unit(name, unitClass, maxHp, damage) {}
 
-Soldier::~Soldier() {
-    std::cout << "~~~" << this->name << " the " << this->unitClass << "___" << std::endl;
-}
+Soldier::~Soldier() {}
 
 void Soldier::attack(Unit& enemy) {
-    if ( this->dead() ) {
-        // throw DeadAttackException("ERROR: zombie attack");
-    }
+    this->state->ensureIsAlive();
     
-    enemy.takeDamage(this->getPhysDmg(), 0);
+    enemy.takeDamage(this->getDamage());
     
-    if ( !enemy.dead() ) {
+    if ( enemy.getHp() != 0 ) {
         enemy.counterAttack(*this);
     }
 }
 
 void Soldier::counterAttack(Unit& enemy) {
-    enemy.takeDamage(this->getPhysDmg()/2, 0);
-}
-
-void Soldier::takeDamage(int physDmg, int magDmg) {
-    if ( this->dead() ) {
-        // throw DeadUnderAttackException("ERROR: target is dead");
-    }
-    
-    setHp(-physDmg, -magDmg);
-}
-
-void Soldier::restoreHp(int physPts, int magPts) {
-    setHp(physPts, magPts);
+    enemy.takeDamage(this->getDamage()/2);
 }
