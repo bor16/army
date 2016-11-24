@@ -1,6 +1,6 @@
 #include "Soldier.h"
 
-Soldier::Soldier(const std::string& name, const std::string& unitClass, int maxHp, int damage) : Unit(name, unitClass, maxHp, damage) {}
+Soldier::Soldier(const std::string& name, const std::string& unitClass, int maxHp, int damage) : Unit(new State(name, unitClass, maxHp, damage)) {}
 
 Soldier::~Soldier() {}
 
