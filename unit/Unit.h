@@ -20,6 +20,9 @@ class Unit {
         const std::string& getName() const;
         const std::string& getUnitClass() const;
         
+        void takeDamage(int damage);
+        void restoreHp(int points);
+        
         virtual void attack(Unit& enemy) = 0;
         virtual void counterAttack(Unit& enemy) = 0;
 };
