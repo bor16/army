@@ -25,6 +25,13 @@ const std::string& Unit::getUnitClass() const {
     return state->getUnitClass();
 }
 
+void Unit::takeDamage(int damage) {
+    this->state->takeDamage(damage);
+}
+void Unit::restoreHp(int points) {
+    this->state->restoreHp(points);
+}
+
 std::ostream& operator<<(std::ostream& out, const Unit& unit) {
     out << unit.getState();
     return out;

@@ -1,6 +1,6 @@
 #include "WerewolfState.h"
 
-WerewolfState::WerewolfState(int maxHp, int physDmg) : State(maxHp, physDmg), isWolf(false) {}
+WerewolfState::WerewolfState(const std::string& name, const std::string& unitClass, int maxHp, int damage, bool isWolf) : State(name, unitClass, maxHp, damage) {}
 
 WerewolfState::~WerewolfState() {}
 
@@ -11,11 +11,11 @@ const bool WerewolfState::wolf() const {
 void WerewolfState::boost(int modifier) {
     hp *= modifier;
     maxHp *= modifier;
-    physDmg *= modifier;
+    damage *= modifier;
 }
 
 void WerewolfState::shrink(int modifier) {
     hp /= modifier;
     maxHp /= modifier;
-    physDmg /= modifier;
+    damage /= modifier;
 }

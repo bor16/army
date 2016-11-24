@@ -11,7 +11,7 @@ class Werewolf : public Soldier {
         void shapeShift();
         
     public:
-        Werewolf(const std::string& name, const std::string& unitClass="Werewolf", int maxHp=80, int physDmg=8);
+        Werewolf(const std::string& name, const std::string& unitClass="Werewolf", int maxHp=80, int damage=8);
         virtual ~Werewolf();
         
         const bool wolf() const;

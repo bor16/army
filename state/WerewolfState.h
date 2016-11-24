@@ -7,8 +7,9 @@
 class WerewolfState : public State {
     private:
         bool isWolf;
+        
     public:
-        WerewolfState(int maxHp, int physDmg);
+        WerewolfState(const std::string& name, const std::string& unitClass, int maxHp, int damage, bool isWolf=false);
         virtual ~WerewolfState();
         
         const bool wolf() const;
