@@ -1,19 +1,15 @@
+#ifndef ROGUE_H
+#define ROGUE_H
+
+#include <iostream>
 #include "Soldier.h"
 
-Soldier::Soldier(const std::string& name, const std::string& unitClass, int maxHp, int damage) : Unit(name, unitClass, maxHp, damage) {}
+class Rogue : public Soldier {
+    public:
+        Rogue(const std::string& name, const std::string& unitClass="Rogue", int maxHp=60, int damage=8);
+        virtual ~Rogue();
+        
+        void attack(Unit& enemy);
+};
 
-Soldier::~Soldier() {}
-
-void Soldier::attack(Unit& enemy) {
-    this->state->ensureIsAlive();
-    
-    enemy.takeDamage(this->getDamage());
-    
-    if ( enemy.getHp() != 0 ) {
-        enemy.counterAttack(*this);
-    }
-}
-
-void Soldier::counterAttack(Unit& enemy) {
-    enemy.takeDamage(this->getDamage()/2);
-}
+#endif //ROGUE_H
