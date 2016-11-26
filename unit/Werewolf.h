@@ -5,16 +5,17 @@
 #include "Soldier.h"
 
 class Werewolf : public Soldier {
-    private:
-        WerewolfState* state;
-        
-        void shapeShift();
+    protected:
+        State* altState;
         
     public:
         Werewolf(const std::string& name, const std::string& unitClass="Werewolf", int maxHp=80, int damage=8);
         virtual ~Werewolf();
         
-        const bool wolf() const;
+        void shapeShift();
+        
+        void attack(Unit& enemy);
+        void counterAttack(Unit& enemy);
 };
 
 #endif //WEREWOLF_H
