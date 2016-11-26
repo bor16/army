@@ -3,14 +3,14 @@
 
 #include <iostream>
 #include "../state/State.h"
-#include "../state/WerewolfState.h"
+#include "../state/WolfState.h"
 
 class Unit {
     protected:
         State* state;
         
     public:
-        Unit(const std::string& name, const std::string& unitClass, int maxHp, int damage);
+        Unit(State* state);
         virtual ~Unit();
         
         const State& getState() const;

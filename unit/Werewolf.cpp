@@ -1,19 +1,29 @@
 #include "Werewolf.h"
 
-Werewolf::Werewolf(const std::string& name, const std::string& unitClass, int maxHp, int damage) : Soldier(name, unitClass, maxHp, damage), state(new WerewolfState(name, unitClass, maxHp, damage)) {}
-
-Werewolf::~Werewolf() {
-    delete state;
+Werewolf::Werewolf(const std::string& name, const std::string& unitClass, int maxHp, int damage) : Soldier(name, unitClass, maxHp, damage) {
+    this->altState = new WolfState(name, unitClass, maxHp, damage);
 }
 
-const bool Werewolf::wolf() const {
-    return state->wolf();
-}
+Werewolf::~Werewolf() {}
 
 void Werewolf::shapeShift() {
-    if ( this->wolf() ) {
-        state->shrink(2);
-    } else {
-        state->boost(2);
+    State* tmp = this->state;
+    
+    this->altState->setHp(this->getHp());
+    this->state = this->altState;
+    this->altState = tmp;
+}
+
+void Werewolf::attack(Unit& enemy) {
+    this->state->ensureIsAlive();
+    
+    enemy.takeDamage(this->getDamage()*2);
+    
+    if ( enemy.getHp() != 0 ) {
+        enemy.counterAttack(*this);
     }
+}
+
+void Werewolf::counterAttack(Unit& enemy) {
+    enemy.takeDamage(this->getDamage());
 }

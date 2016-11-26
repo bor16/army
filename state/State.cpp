@@ -37,6 +37,10 @@ void State::ensureIsAlive() {
     }
 }
 
+void State::setHp(int hp) {
+    this->hp = hp;
+}
+
 void State::takeDamage(int damage) {
     ensureIsAlive();
     this->calcHp(-damage);

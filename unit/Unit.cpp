@@ -1,6 +1,6 @@
 #include "Unit.h"
 
-Unit::Unit(const std::string& name, const std::string& unitClass, int maxHp, int damage) : state(new State(name, unitClass, maxHp, damage)) {}
+Unit::Unit(State* state) : state(state) {}
 
 Unit::~Unit() {
     delete state;
