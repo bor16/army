@@ -23,6 +23,8 @@ class State {
         const std::string& getName() const;
         const std::string& getUnitClass() const;
         
+        void setHp(int hp);
+        
         void ensureIsAlive();
         
         virtual void takeDamage(int damage);
