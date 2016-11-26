@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "../state/State.h"
-#include "../state/WerewolfState.h"
+#include "../state/WolfState.h"
 
 class Unit {
     protected:
