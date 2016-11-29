@@ -13,6 +13,7 @@ class WolfState : public State {
         virtual ~WolfState();
         
         void takeDamage(int damage);
+        void takeMagDamage(int damage);
 };
 
 #endif //WOLFSTATE_H
