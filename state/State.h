@@ -28,6 +28,7 @@ class State {
         void ensureIsAlive();
         
         virtual void takeDamage(int damage);
+        virtual void takeMagDamage(int damage);
         virtual void restoreHp(int points);
 };
 

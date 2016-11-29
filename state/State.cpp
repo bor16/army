@@ -46,6 +46,10 @@ void State::takeDamage(int damage) {
     this->calcHp(-damage);
 }
 
+void State::takeMagDamage(int damage) {
+    this->takeDamage(damage);
+}
+
 void State::restoreHp(int points) {
     ensureIsAlive();
     this->calcHp(points);
