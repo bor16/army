@@ -28,6 +28,9 @@ const std::string& Unit::getUnitClass() const {
 void Unit::takeDamage(int damage) {
     this->state->takeDamage(damage);
 }
+void Unit::takeMagDamage(int damage) {
+    this->state->takeMagDamage(damage);
+}
 void Unit::restoreHp(int points) {
     this->state->restoreHp(points);
 }

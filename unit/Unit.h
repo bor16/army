@@ -21,6 +21,7 @@ class Unit {
         const std::string& getUnitClass() const;
         
         void takeDamage(int damage);
+        void takeMagDamage(int damage);
         void restoreHp(int points);
         
         virtual void attack(Unit& enemy) = 0;
