@@ -13,9 +13,6 @@ class Werewolf : public Soldier {
         virtual ~Werewolf();
         
         void shapeShift();
-        
-        void attack(Unit& enemy);
-        void counterAttack(Unit& enemy);
 };
 
 #endif //WEREWOLF_H
