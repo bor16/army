@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "../state/State.h"
-#include "../state/WolfState.h"
 
 class Unit {
     protected:
@@ -18,7 +17,7 @@ class Unit {
         const int getMaxHp() const;
         const int getDamage() const;
         const std::string& getName() const;
-        const std::string& getUnitClass() const;
+        UnitClass getTitle() const;
         
         void takeDamage(int damage);
         void takeMagDamage(int damage);

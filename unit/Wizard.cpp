@@ -1,7 +1,7 @@
 #include "Wizard.h"
 
-Wizard::Wizard(const std::string& name, const std::string& unitClass, int maxHp, int damage, int maxMana) : Soldier(name, unitClass, maxHp, damage) {
-    this->state = new CasterState(name, unitClass, maxHp, damage, maxMana);
+Wizard::Wizard(const std::string& name, UnitClass title, int maxHp, int damage, int maxMana) : Soldier(name, title, maxHp, damage) {
+    this->state = new CasterState(name, title, maxHp, damage, maxMana);
 }
 
 Wizard::~Wizard() {

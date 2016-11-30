@@ -11,7 +11,7 @@ class Wizard : public Soldier {
         CasterState* state;
     
     public:
-        Wizard(const std::string& name, const std::string& unitClass="Wizard", int maxHp=50, int damage=3, int maxMana=100);
+        Wizard(const std::string& name, UnitClass title=WIZARD, int maxHp=50, int damage=3, int maxMana=100);
         virtual ~Wizard();
         
         const int getMana() const;
