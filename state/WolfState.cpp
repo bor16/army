@@ -22,5 +22,5 @@ void WolfState::takeDamage(int damage) {
 
 void WolfState::takeMagDamage(int damage) {
     this->ensureIsAlive();
-    this->calcHp(-damage*2);
+    this->calcHp(-damage);
 }
