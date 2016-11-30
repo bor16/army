@@ -12,6 +12,10 @@ void Vampire::attack(Unit& enemy) {
     enemy.takeDamage(this->getDamage());
     points -= enemy.getHp();
     this->restoreHp(points/2);
+    
+    if ( enemy.getHp() != 0 ) {
+        enemy.counterAttack(*this);
+    }
 }
 
 void Vampire::counterAttack(Unit& enemy) {
