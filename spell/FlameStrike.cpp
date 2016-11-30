@@ -1,6 +1,6 @@
 #include "FlameStrike.h"
 
-FlameStrike::FlameStrike(int power, int cost, const std::string title) : Spell(power, cost, title) {}
+FlameStrike::FlameStrike(int power, int cost, SpellTitle title) : Spell(power, cost, title) {}
 
 FlameStrike::~FlameStrike() {}
 
