@@ -9,7 +9,7 @@ class WolfState : public State {
         void calcHp(double points);
         
     public:
-        WolfState(const std::string& name, const std::string& unitClass, int maxHp, int damage);
+        WolfState(const std::string& name, UnitClass title, int maxHp, int damage);
         virtual ~WolfState();
         
         void takeDamage(int damage);
