@@ -65,3 +65,18 @@ TEST_CASE("test Unit", "[Unit]") {
     delete wer;
     delete wiz;
 }
+
+TEST_CASE("test SpellCaster", "[SpellCaster]") {
+    Wizard* wiz = new Wizard("Wiz");
+    Soldier* sol = new Soldier("Sol");
+    
+    SECTION("Wizard") {
+        wiz->cast(FLAME_STRIKE, *sol);
+        REQUIRE(sol->getHp() == 80);
+        REQUIRE(wiz->getHp() == 45);
+        REQUIRE(wiz->getMana() == 60);
+    }
+    
+    delete wiz;
+    delete sol;
+}
