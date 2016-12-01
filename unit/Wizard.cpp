@@ -28,4 +28,8 @@ void Wizard::cast(Unit& target, Spell& spell) {
     
     this->reduceMana(spell.getCost());
     spell.action(target);
+    
+    if ( target.getHp() != 0 ) {
+        target.counterAttack(*this);
+    }
 }
