@@ -3,25 +3,38 @@
 
 #include <iostream>
 
+typedef enum {
+    SOLDIER,
+    ROGUE,
+    WEREWOLF,
+    VAMPIRE,
+    BERSERKER,
+    WIZARD,
+    HEALER,
+    PRIEST,
+    WARLOCK,
+    NECROMANCER
+} UnitClass;
+
 class State {
     protected:
         int hp;
         int maxHp;
         int damage;
         std::string name;
-        std::string unitClass;
+        UnitClass title;
         
         void calcHp(int points);
         
     public:
-        State(const std::string& name, const std::string& unitClass, int maxHp, int damage);
+        State(const std::string& name, UnitClass title, int maxHp, int damage);
         virtual ~State();
         
         const int getHp() const;
         const int getMaxHp() const;
         const int getDamage() const;
         const std::string& getName() const;
-        const std::string& getUnitClass() const;
+        UnitClass getTitle() const;
         
         void setHp(int hp);
         

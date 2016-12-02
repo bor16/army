@@ -21,8 +21,8 @@ const int Unit::getDamage() const {
 const std::string& Unit::getName() const {
     return state->getName();
 }
-const std::string& Unit::getUnitClass() const {
-    return state->getUnitClass();
+UnitClass Unit::getTitle() const {
+    return state->getTitle();
 }
 
 void Unit::takeDamage(int damage) {

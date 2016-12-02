@@ -4,19 +4,24 @@
 #include <iostream>
 #include "../unit/Unit.h"
 
+typedef enum {
+    FLAME_STRIKE,
+    HEAL
+} SpellTitle;
+
 class Spell {
     protected:
         int power;
         int cost;
-        std::string title;
+        SpellTitle title;
         
     public:
-        Spell(int power, int cost, const std::string title);
+        Spell(int power, int cost, SpellTitle title);
         virtual ~Spell();
         
         const int getPower() const;
         const int getCost() const;
-        const std::string getTitle() const;
+        SpellTitle getTitle() const;
         
         virtual void action(Unit& target) = 0;
 };

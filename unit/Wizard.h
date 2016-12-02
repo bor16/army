@@ -2,25 +2,14 @@
 #define WIZARD_H
 
 #include <iostream>
-#include "Soldier.h"
-#include "../state/CasterState.h"
-#include "../spell/Spell.h"
+#include "Caster.h"
 
-class Wizard : public Soldier {
-    protected:
-        CasterState* state;
-    
+class Wizard : public Caster {
     public:
-        Wizard(const std::string& name, const std::string& unitClass="Wizard", int maxHp=50, int damage=3, int maxMana=100);
+        Wizard(const std::string& name, UnitClass title=WIZARD, int maxHp=50, int damage=3, int maxMana=100);
         virtual ~Wizard();
         
-        const int getMana() const;
-        const int getMaxMana() const;
-        
-        void reduceMana(int cost);
-        void restoreMana(int points);
-        
-        void cast(Unit& target, Spell& spell);
+        void cast(SpellTitle title, Unit& target);
 };
 
 #endif //WIZARD_H

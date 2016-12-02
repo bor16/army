@@ -1,6 +1,6 @@
 #include "Rogue.h"
 
-Rogue::Rogue(const std::string& name, const std::string& unitClass, int maxHp, int damage) : Soldier(name, unitClass, maxHp, damage) {}
+Rogue::Rogue(const std::string& name, UnitClass title, int maxHp, int damage) : Soldier(name, title, maxHp, damage) {}
 
 Rogue::~Rogue() {}
 

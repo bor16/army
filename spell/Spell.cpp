@@ -1,6 +1,6 @@
 #include "Spell.h"
 
-Spell::Spell(int power, int cost, const std::string title) : power(power), cost(cost), title(title) {}
+Spell::Spell(int power, int cost, SpellTitle title) : power(power), cost(cost), title(title) {}
 
 Spell::~Spell() {}
 
@@ -10,6 +10,6 @@ const int Spell::getPower() const {
 const int Spell::getCost() const {
     return this->cost;
 }
-const std::string Spell::getTitle() const {
+SpellTitle Spell::getTitle() const {
     return this->title;
 }
