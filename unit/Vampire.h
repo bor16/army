@@ -6,7 +6,7 @@
 
 class Vampire : public Soldier {
     public:
-        Vampire(const std::string& name, UnitClass title=VAMPIRE, int maxHp=40, int damage=6);
+        Vampire(const std::string& name, UnitClass title=UnitClass::VAMPIRE, int maxHp=40, int damage=6);
         virtual ~Vampire();
         
         void attack(Unit& enemy);

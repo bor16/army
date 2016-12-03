@@ -6,7 +6,7 @@
 
 class Healer : public Wizard {
     public:
-        Healer(const std::string& name, UnitClass title=WIZARD, int maxHp=60, int damage=2, int maxMana=100);
+        Healer(const std::string& name, UnitClass title=UnitClass::WIZARD, int maxHp=60, int damage=2, int maxMana=100);
         virtual ~Healer();
 };
 

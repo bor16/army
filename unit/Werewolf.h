@@ -10,7 +10,7 @@ class Werewolf : public Soldier {
         State* altState;
         
     public:
-        Werewolf(const std::string& name, UnitClass title=WEREWOLF, int maxHp=80, int damage=8);
+        Werewolf(const std::string& name, UnitClass title=UnitClass::WEREWOLF, int maxHp=80, int damage=8);
         virtual ~Werewolf();
         
         void shapeShift();
