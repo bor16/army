@@ -6,7 +6,7 @@
 
 class FlameStrike: public Spell {
     public:
-        FlameStrike(int power=20, int cost=40, SpellTitle title=FLAME_STRIKE);
+        FlameStrike(int power=20, int cost=40, SpellTitle title=SpellTitle::FLAME_STRIKE);
         virtual ~FlameStrike();
         
         virtual void action(Unit& target);

@@ -6,7 +6,7 @@
 
 class Heal: public Spell {
     public:
-        Heal(int power=20, int cost=40, SpellTitle title=HEAL);
+        Heal(int power=20, int cost=40, SpellTitle title=SpellTitle::HEAL);
         virtual ~Heal();
         
         virtual void action(Unit& target);

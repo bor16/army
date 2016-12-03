@@ -3,11 +3,7 @@
 
 #include <iostream>
 #include "../unit/Unit.h"
-
-typedef enum {
-    FLAME_STRIKE,
-    HEAL
-} SpellTitle;
+#include "SpellTitle.h"
 
 class Spell {
     protected:
