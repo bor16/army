@@ -2,19 +2,7 @@
 #define STATE_H
 
 #include <iostream>
-
-typedef enum {
-    SOLDIER,
-    ROGUE,
-    WEREWOLF,
-    VAMPIRE,
-    BERSERKER,
-    WIZARD,
-    HEALER,
-    PRIEST,
-    WARLOCK,
-    NECROMANCER
-} UnitClass;
+#include "UnitClass.h"
 
 class State {
     protected:
