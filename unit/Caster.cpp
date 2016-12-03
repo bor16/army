@@ -4,8 +4,8 @@ Caster::Caster(const std::string& name, UnitClass title, int maxHp, int damage, 
     this->state = new CasterState(name, title, maxHp, damage, maxMana);
     this->spellbook = new std::map<SpellTitle, Spell*>();
     
-    this->spellbook->insert(std::pair<SpellTitle, Spell*>(FLAME_STRIKE, new FlameStrike()));
-    this->spellbook->insert(std::pair<SpellTitle, Spell*>(HEAL, new Heal()));
+    this->spellbook->insert(std::pair<SpellTitle, Spell*>(SpellTitle::FLAME_STRIKE, new FlameStrike()));
+    this->spellbook->insert(std::pair<SpellTitle, Spell*>(SpellTitle::HEAL, new Heal()));
 }
 
 Caster::~Caster() {
@@ -36,7 +36,7 @@ Spell& Caster::findSpell(SpellTitle title) const {
     if ( this->openSpellbook().find(title) == this->openSpellbook().end() ) {
         // throw SpellUnavailableException();
     }
-    spell = openSpellbook().at(FLAME_STRIKE);
+    spell = openSpellbook().at(SpellTitle::FLAME_STRIKE);
     
     return *spell;
 }
