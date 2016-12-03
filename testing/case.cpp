@@ -71,7 +71,7 @@ TEST_CASE("test SpellCaster", "[SpellCaster]") {
     Soldier* sol = new Soldier("Sol");
     
     SECTION("Wizard") {
-        wiz->cast(FLAME_STRIKE, *sol);
+        wiz->cast(SpellTitle::FLAME_STRIKE, *sol);
         REQUIRE(sol->getHp() == 80);
         REQUIRE(wiz->getHp() == 45);
         REQUIRE(wiz->getMana() == 60);
