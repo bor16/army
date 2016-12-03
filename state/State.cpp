@@ -56,7 +56,7 @@ void State::restoreHp(int points) {
 }
 
 std::ostream& operator<<(std::ostream& out, const State& state) {
-    out << state.getName() << " the " << state.getTitle() << ": ";
+    out << state.getName() << " the " << static_cast<std::underlying_type<UnitClass>::type>(state.getTitle()) << ": ";
     out << "hp(" << state.getHp() << "/" << state.getMaxHp() << "), ";
     out << "damage(" << state.getDamage() << ")";
     return out;
