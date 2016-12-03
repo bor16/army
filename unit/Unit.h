@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include "../state/State.h"
+#include "../interface/IFighter.h"
 
-class Unit {
+class Unit : public IFighter {
     protected:
         State* state;
         
@@ -22,9 +23,6 @@ class Unit {
         void takeDamage(int damage);
         void takeMagDamage(int damage);
         void restoreHp(int points);
-        
-        virtual void attack(Unit& enemy) = 0;
-        virtual void counterAttack(Unit& enemy) = 0;
 };
 
 std::ostream& operator<<(std::ostream& out, const Unit& unit);

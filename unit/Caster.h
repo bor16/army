@@ -8,8 +8,9 @@
 #include "../spell/Spell.h"
 #include "../spell/FlameStrike.h"
 #include "../spell/Heal.h"
+#include "../interface/ICaster.h"
 
-class Caster : public Soldier {
+class Caster : public Soldier, public ICaster {
     protected:
         CasterState* state;
         std::map<SpellTitle, Spell*>* spellbook;
