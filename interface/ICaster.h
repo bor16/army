@@ -1,9 +1,8 @@
-#include <iostream>
+#ifndef ICASTER_H
+#define ICASTER_H
 
-typedef enum {
-    FLAME_STRIKE,
-    HEAL
-} SpellTitle;
+#include <iostream>
+#include "../spell/SpellTitle.h"
 
 class Unit;
 class ICaster {
@@ -12,3 +11,5 @@ class ICaster {
         
         virtual void cast(SpellTitle title, Unit& target) = 0;
 };
+
+#endif //ICASTER_H
