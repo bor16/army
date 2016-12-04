@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include "../unit/Necromancer.h"
 
 Unit::Unit(State* state) : state(state) {}
 
@@ -33,6 +34,23 @@ void Unit::takeMagDamage(int damage) {
 }
 void Unit::restoreHp(int points) {
     this->state->restoreHp(points);
+}
+
+void Unit::attach(Necromancer* observer) {
+    observers->insert(observer);
+    observer->attachSubject(this);
+}
+void Unit::detach(Necromancer* observer) {
+    observers->erase(observer);
+    observer->detachSubject(this);
+}
+void Unit::notify() {
+    std::set<Necromancer*>::iterator observer;
+    
+    for ( observer = observers->begin(); observer != observers->end(); ++observer ) {
+        (*observer)->update();
+        this->detach(*observer);
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, const Unit& unit) {
