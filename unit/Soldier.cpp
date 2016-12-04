@@ -4,16 +4,16 @@ Soldier::Soldier(const std::string& name, UnitClass title, int maxHp, int damage
 
 Soldier::~Soldier() {}
 
-void Soldier::attack(Unit& enemy) {
+void Soldier::attack(Unit& target) {
     this->state->ensureIsAlive();
     
-    enemy.takeDamage(this->getDamage());
+    target.takeDamage(this->getDamage());
     
-    if ( enemy.getHp() != 0 ) {
-        enemy.counterAttack(*this);
+    if ( target.getHp() != 0 ) {
+        target.counterAttack(*this);
     }
 }
 
-void Soldier::counterAttack(Unit& enemy) {
-    enemy.takeDamage(this->getDamage()/2);
+void Soldier::counterAttack(Unit& target) {
+    target.takeDamage(this->getDamage()/2);
 }

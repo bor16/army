@@ -4,8 +4,8 @@ Rogue::Rogue(const std::string& name, UnitClass title, int maxHp, int damage) : 
 
 Rogue::~Rogue() {}
 
-void Rogue::attack(Unit& enemy) {
+void Rogue::attack(Unit& target) {
     this->state->ensureIsAlive();
     
-    enemy.takeDamage(this->getDamage());
+    target.takeDamage(this->getDamage());
 }

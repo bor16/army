@@ -9,7 +9,7 @@ class Rogue : public Soldier {
         Rogue(const std::string& name, UnitClass title=UnitClass::ROGUE, int maxHp=60, int damage=8);
         virtual ~Rogue();
         
-        void attack(Unit& enemy);
+        void attack(Unit& target);
 };
 
 #endif //ROGUE_H

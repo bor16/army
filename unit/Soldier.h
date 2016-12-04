@@ -10,8 +10,8 @@ class Soldier : public Unit {
         Soldier(const std::string& name, UnitClass title=UnitClass::SOLDIER, int maxHp=100, int damage=10);
         virtual ~Soldier();
         
-        virtual void attack(Unit& enemy);
-        virtual void counterAttack(Unit& enemy);
+        virtual void attack(Unit& target);
+        virtual void counterAttack(Unit& target);
 };
 
 #endif //SOLDIER_H

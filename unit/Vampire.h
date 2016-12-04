@@ -9,8 +9,8 @@ class Vampire : public Soldier {
         Vampire(const std::string& name, UnitClass title=UnitClass::VAMPIRE, int maxHp=40, int damage=6);
         virtual ~Vampire();
         
-        void attack(Unit& enemy);
-        void counterAttack(Unit& enemy);
+        void attack(Unit& target);
+        void counterAttack(Unit& target);
 };
 
 #endif //VAMPIRE_H
