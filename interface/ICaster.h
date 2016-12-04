@@ -9,6 +9,7 @@ class ICaster {
     public:
         virtual ~ICaster() {}
         
+        virtual Spell& findSpell(SpellTitle title) const = 0;
         virtual void cast(SpellTitle title, Unit& target) = 0;
 };
 
