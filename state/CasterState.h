@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include "State.h"
+#include "../interface/ICasterState.h"
 
-class CasterState: public State {
+class CasterState: public State, ICasterState {
     protected:
         int mana;
         int maxMana;
