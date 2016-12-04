@@ -80,3 +80,37 @@ TEST_CASE("test SpellCaster", "[SpellCaster]") {
     delete wiz;
     delete sol;
 }
+
+TEST_CASE("test Werewolf", "[shapeShift]") {
+    Werewolf* wer = new Werewolf("Wer");
+    
+    SECTION("Full hp shift") {
+        REQUIRE(wer->getHp() == 80);
+        REQUIRE(wer->getDamage() == 8);
+        
+        wer->shapeShift();
+        REQUIRE(wer->getHp() == 80);
+        REQUIRE(wer->getDamage() == 16);
+        
+        wer->shapeShift();
+        REQUIRE(wer->getHp() == 80);
+        REQUIRE(wer->getDamage() == 8);
+    }
+    
+    SECTION("Reduced hp shift") {
+        REQUIRE(wer->getHp() == 80);
+        REQUIRE(wer->getDamage() == 8);
+        
+        wer->takeDamage(10);
+        wer->shapeShift();
+        REQUIRE(wer->getHp() == 70);
+        REQUIRE(wer->getDamage() == 16);
+        
+        wer->takeDamage(10);
+        wer->shapeShift();
+        REQUIRE(wer->getHp() == 65);
+        REQUIRE(wer->getDamage() == 8);
+    }
+    
+    delete wer;
+}
