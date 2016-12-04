@@ -36,7 +36,7 @@ Spell& Caster::findSpell(SpellTitle title) const {
     if ( this->openSpellbook().find(title) == this->openSpellbook().end() ) {
         // throw SpellUnavailableException();
     }
-    spell = openSpellbook().at(SpellTitle::FLAME_STRIKE);
+    spell = openSpellbook().at(title);
     
     return *spell;
 }
