@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include "UnitClass.h"
+#include "../interface/IFighterState.h"
 
-class State {
+class State : public IFighterState {
     protected:
         int hp;
         int maxHp;
