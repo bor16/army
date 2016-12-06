@@ -7,6 +7,9 @@ EXEC=battle.out
 
 all: $(EXEC)
 
+b: $(EXEC)
+	./$<
+
 $(EXEC): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(EXEC)
 
