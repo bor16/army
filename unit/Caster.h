@@ -8,15 +8,14 @@
 #include "../spell/Spell.h"
 #include "../spell/FlameStrike.h"
 #include "../spell/Heal.h"
-#include "../interface/ICaster.h"
 
-class Caster : public Soldier, public ICaster {
+class Caster : public Soldier {
     protected:
         CasterState* state;
         std::map<SpellTitle, Spell*>* spellbook;
     
     public:
-        Caster(const std::string& name, UnitClass title, int maxHp, int damage, int maxMana);
+        Caster(Class title, int maxHp, int damage, int maxMana);
         virtual ~Caster();
         
         const int getMana() const;
