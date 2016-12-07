@@ -6,10 +6,10 @@
 
 class Heal: public Spell {
     public:
-        Heal(int power=20, int cost=40, SpellTitle title=SpellTitle::HEAL);
+        Heal(SpellTitle title=SpellTitle::HEAL, int power=static_cast<int>(Power::HEAL), int cost=static_cast<int>(Cost::HEAL));
         virtual ~Heal();
         
-        virtual void action(Unit& target);
+        void action(Unit& target);
 };
 
 #endif //HEAL_H

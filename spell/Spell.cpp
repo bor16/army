@@ -1,6 +1,6 @@
 #include "Spell.h"
 
-Spell::Spell(int power, int cost, SpellTitle title) : power(power), cost(cost), title(title) {}
+Spell::Spell(SpellTitle title, int power, int cost) : title(title), power(power), cost(cost) {}
 
 Spell::~Spell() {}
 

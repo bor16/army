@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "../unit/Unit.h"
-#include "SpellTitle.h"
+#include "SpellProperties.h"
 
 class Spell {
     protected:
@@ -12,7 +12,7 @@ class Spell {
         SpellTitle title;
         
     public:
-        Spell(int power, int cost, SpellTitle title);
+        Spell(SpellTitle title, int power, int cost);
         virtual ~Spell();
         
         const int getPower() const;
