@@ -1,6 +1,6 @@
 #include "Vampire.h"
 
-Vampire::Vampire(const std::string& name, UnitClass title, int maxHp, int damage) : Soldier(name, title, maxHp, damage) {}
+Vampire::Vampire(Class title, int maxHp, int damage) : Soldier(title, maxHp, damage) {}
 
 Vampire::~Vampire() {}
 

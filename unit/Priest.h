@@ -6,7 +6,7 @@
 
 class Priest : public Wizard {
     public:
-        Priest(const std::string& name, UnitClass title=UnitClass::WIZARD, int maxHp=70, int damage=4, int maxMana=80);
+        Priest(Class title=Class::PRIEST, int maxHp=static_cast<int>(Hp::PRIEST), int damage=static_cast<int>(Dmg::PRIEST), int maxMana=static_cast<int>(Mana::PRIEST));
         virtual ~Priest();
 };
 

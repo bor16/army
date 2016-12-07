@@ -1,6 +1,6 @@
 #include "Necromancer.h"
 
-Necromancer::Necromancer(const std::string& name, UnitClass title, int maxHp, int damage, int maxMana) : Wizard(name, title, maxHp, damage, maxMana) {}
+Necromancer::Necromancer(Class title, int maxHp, int damage, int maxMana) : Wizard(title, maxHp, damage, maxMana) {}
 
 Necromancer::~Necromancer() {}
 

@@ -3,13 +3,14 @@
 
 #include <iostream>
 #include "Wizard.h"
+#include "../interface/IObserver.h"
 
 class Necromancer : public Wizard, public IObserver {
     protected:
         std::set<Unit*>* subjects;
         
     public:
-        Necromancer(const std::string& name, UnitClass title=UnitClass::NECROMANCER, int maxHp=80, int damage=5, int maxMana=100);
+        Necromancer(Class title=Class::NECROMANCER, int maxHp=static_cast<int>(Hp::NECROMANCER), int damage=static_cast<int>(Dmg::NECROMANCER), int maxMana=static_cast<int>(Mana::NECROMANCER));
         virtual ~Necromancer();
         
         void attack(Unit& target);

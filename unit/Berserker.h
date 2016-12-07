@@ -10,7 +10,7 @@ class Berserker : public Soldier {
         BerserkerState* state;
     
     public:
-        Berserker(const std::string& name, UnitClass title=UnitClass::BERSERKER, int maxHp=70, int damage=7);
+        Berserker(Class title=Class::BERSERKER, int maxHp=static_cast<int>(Hp::BERSERKER), int damage=static_cast<int>(Dmg::BERSERKER));
         virtual ~Berserker();
 };
 
