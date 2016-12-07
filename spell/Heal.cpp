@@ -1,6 +1,6 @@
 #include "Heal.h"
 
-Heal::Heal(int power, int cost, SpellTitle title) : Spell(power, cost, title) {}
+Heal::Heal(SpellTitle title, int power, int cost) : Spell(title, power, cost) {}
 
 Heal::~Heal() {}
 

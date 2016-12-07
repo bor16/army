@@ -6,11 +6,11 @@
 
 class Vampire : public Soldier {
     public:
-        Vampire(const std::string& name, UnitClass title=VAMPIRE, int maxHp=40, int damage=6);
+        Vampire(Class title=Class::VAMPIRE, int maxHp=static_cast<int>(Hp::VAMPIRE), int damage=static_cast<int>(Dmg::VAMPIRE));
         virtual ~Vampire();
         
-        void attack(Unit& enemy);
-        void counterAttack(Unit& enemy);
+        void attack(Unit& target);
+        void counterAttack(Unit& target);
 };
 
 #endif //VAMPIRE_H

@@ -1,11 +1,11 @@
 #include "Rogue.h"
 
-Rogue::Rogue(const std::string& name, UnitClass title, int maxHp, int damage) : Soldier(name, title, maxHp, damage) {}
+Rogue::Rogue(Class title, int maxHp, int damage) : Soldier(title, maxHp, damage) {}
 
 Rogue::~Rogue() {}
 
-void Rogue::attack(Unit& enemy) {
+void Rogue::attack(Unit& target) {
     this->state->ensureIsAlive();
     
-    enemy.takeDamage(this->getDamage());
+    target.takeDamage(this->getDamage());
 }

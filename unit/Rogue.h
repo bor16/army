@@ -6,10 +6,10 @@
 
 class Rogue : public Soldier {
     public:
-        Rogue(const std::string& name, UnitClass title=ROGUE, int maxHp=60, int damage=8);
+        Rogue(Class title=Class::ROGUE, int maxHp=static_cast<int>(Hp::ROGUE), int damage=static_cast<int>(Dmg::ROGUE));
         virtual ~Rogue();
         
-        void attack(Unit& enemy);
+        void attack(Unit& target);
 };
 
 #endif //ROGUE_H

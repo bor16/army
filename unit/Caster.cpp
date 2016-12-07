@@ -1,11 +1,11 @@
 #include "Caster.h"
 
-Caster::Caster(const std::string& name, UnitClass title, int maxHp, int damage, int maxMana) : Soldier(name, title, maxHp, damage) {
-    this->state = new CasterState(name, title, maxHp, damage, maxMana);
+Caster::Caster(Class title, int maxHp, int damage, int maxMana) : Soldier(title, maxHp, damage) {
+    this->state = new CasterState(title, maxHp, damage, maxMana);
     this->spellbook = new std::map<SpellTitle, Spell*>();
     
-    this->spellbook->insert(std::pair<SpellTitle, Spell*>(FLAME_STRIKE, new FlameStrike()));
-    this->spellbook->insert(std::pair<SpellTitle, Spell*>(HEAL, new Heal()));
+    this->spellbook->insert(std::pair<SpellTitle, Spell*>(SpellTitle::FLAME_STRIKE, new FlameStrike()));
+    this->spellbook->insert(std::pair<SpellTitle, Spell*>(SpellTitle::HEAL, new Heal()));
 }
 
 Caster::~Caster() {
@@ -34,9 +34,22 @@ Spell& Caster::findSpell(SpellTitle title) const {
     Spell* spell;
     
     if ( this->openSpellbook().find(title) == this->openSpellbook().end() ) {
-        // throw SpellUnavailableException();
+        throw SpellUnavailableException();
     }
-    spell = openSpellbook().at(FLAME_STRIKE);
+    spell = openSpellbook().at(title);
     
     return *spell;
+}
+
+void Caster::cast(SpellTitle title, Unit& target) {
+    Spell& spell = findSpell(title);
+    
+    this->state->ensureIsAlive();
+    
+    this->reduceMana(spell.getCost());
+    spell.action(target);
+    
+    if ( target.getHp() != 0 ) {
+        target.counterAttack(*this);
+    }
 }

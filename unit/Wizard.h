@@ -6,7 +6,7 @@
 
 class Wizard : public Caster {
     public:
-        Wizard(const std::string& name, UnitClass title=WIZARD, int maxHp=50, int damage=3, int maxMana=100);
+        Wizard(Class title=Class::WIZARD, int maxHp=static_cast<int>(Hp::WIZARD), int damage=static_cast<int>(Dmg::WIZARD), int maxMana=static_cast<int>(Mana::WIZARD));
         virtual ~Wizard();
         
         void cast(SpellTitle title, Unit& target);

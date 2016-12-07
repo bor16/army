@@ -1,7 +1,7 @@
 #include "Werewolf.h"
 
-Werewolf::Werewolf(const std::string& name, UnitClass title, int maxHp, int damage) : Soldier(name, title, maxHp, damage) {
-    this->altState = new WolfState(name, title, maxHp, damage*2);
+Werewolf::Werewolf(Class title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
+    this->altState = new WolfState(title, maxHp, damage*2);
 }
 
 Werewolf::~Werewolf() {}

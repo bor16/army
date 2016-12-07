@@ -12,7 +12,7 @@ class CasterState: public State {
         void calcMana(int points);
         
     public:
-        CasterState(const std::string& name, UnitClass title, int maxHp, int damage, int maxMana);
+        CasterState(Class title, int maxHp, int damage, int maxMana);
         virtual ~CasterState();
         
         const int getMana() const;

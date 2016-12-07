@@ -1,27 +1,27 @@
 #include "Vampire.h"
 
-Vampire::Vampire(const std::string& name, UnitClass title, int maxHp, int damage) : Soldier(name, title, maxHp, damage) {}
+Vampire::Vampire(Class title, int maxHp, int damage) : Soldier(title, maxHp, damage) {}
 
 Vampire::~Vampire() {}
 
-void Vampire::attack(Unit& enemy) {
-    int points = enemy.getHp();
+void Vampire::attack(Unit& target) {
+    int points = target.getHp();
     
     this->state->ensureIsAlive();
     
-    enemy.takeDamage(this->getDamage());
-    points -= enemy.getHp();
+    target.takeDamage(this->getDamage());
+    points -= target.getHp();
     this->restoreHp(points/2);
     
-    if ( enemy.getHp() != 0 ) {
-        enemy.counterAttack(*this);
+    if ( target.getHp() != 0 ) {
+        target.counterAttack(*this);
     }
 }
 
-void Vampire::counterAttack(Unit& enemy) {
-    int points = enemy.getHp();
+void Vampire::counterAttack(Unit& target) {
+    int points = target.getHp();
     
-    enemy.takeDamage(this->getDamage()/2);
-    points -= enemy.getHp();
+    target.takeDamage(this->getDamage()/2);
+    points -= target.getHp();
     this->restoreHp(points/2);
 }
