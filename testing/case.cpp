@@ -1,82 +1,76 @@
-#include "../state/State.h"
-#include "../state/BerserkerState.h"
-#include "../state/CasterState.h"
-#include "../state/WolfState.h"
-#include "../unit/Unit.h"
-#include "../unit/Berserker.h"
-#include "../unit/Rogue.h"
 #include "../unit/Soldier.h"
-#include "../unit/Vampire.h"
-#include "../unit/Werewolf.h"
-#include "../unit/Wizard.h"
+#include "../unit/Rogue.h"
 #include "catch.hpp"
 
-TEST_CASE("test Unit", "[Unit]") {
-    Berserker* ber = new Berserker("Ber");
-    Rogue* rog = new Rogue("Rog");
-    Soldier* sol = new Soldier("Sol");
-    Vampire* vam = new Vampire("Vam");
-    Werewolf* wer = new Werewolf("Wer");
-    Wizard* wiz = new Wizard("Wiz");
+TEST_CASE("test Soldier", "[Soldier]") {
+    Soldier* sol = new Soldier();
+    Soldier* sol2 = new Soldier();
     
-    SECTION("Unit: defaults") {
-        REQUIRE( ber->getHp() == 70 );
-        REQUIRE( rog->getHp() == 60 );
+    SECTION("Defaults") {
         REQUIRE( sol->getHp() == 100 );
-        REQUIRE( vam->getHp() == 40 );
-        REQUIRE( wer->getHp() == 80 );
-        REQUIRE( wiz->getHp() == 50 );
+        REQUIRE( sol->getMaxHp() == 100 );
+        REQUIRE( sol->getDamage() == 10 );
+        REQUIRE( sol->getTitle() == Class::SOLDIER );
     }
     
-    SECTION("Unit: attack/counterAttack") {
-        sol->attack(*rog);
-        REQUIRE( rog->getHp() == 50 );
-        REQUIRE( sol->getHp() == 96 );
-        rog->attack(*sol);
-        REQUIRE( sol->getHp() == 88 );
-        REQUIRE( rog->getHp() == 50 );
+    SECTION("Attack") {
+        sol->attack(*sol2);
+        REQUIRE( sol2->getHp() == (static_cast<int>(Hp::SOLDIER) - static_cast<int>(Dmg::SOLDIER)) );
+        REQUIRE( sol->getHp() == (static_cast<int>(Hp::SOLDIER) - static_cast<int>(Dmg::SOLDIER)/2) );
     }
     
-    SECTION("Unit: Werewolf/Vampire") {
-        SECTION("Werewolf/Vampire attack/counterAttack") {
-            wer->attack(*vam);
-            REQUIRE( vam->getHp() == 33 );
-            REQUIRE( wer->getHp() == 77 );
-            
-            vam->attack(*wer);
-            REQUIRE( wer->getHp() == 71 );
-            REQUIRE( vam->getHp() == 32 );
+    SECTION("Limit") {
+        for ( int i = 0; i < 16; i++ ) {
+            sol->attack(*sol2);
         }
-        SECTION("Vampire/Werewolf attack/counterAttack") {
-            vam->attack(*wer);
-            REQUIRE( wer->getHp() == 74 );
-            REQUIRE( vam->getHp() == 36 );
-            
-            wer->attack(*vam);
-            REQUIRE( vam->getHp() == 29 );
-            REQUIRE( wer->getHp() == 71 );
-        }
+        REQUIRE( sol2->getHp() >= 0 );
+        REQUIRE( sol->getHp() == 55 );
+        
+        REQUIRE_THROWS_AS( sol2->attack(*sol), DeadActionException );
     }
     
-    delete ber;
-    delete rog;
     delete sol;
-    delete vam;
-    delete wer;
-    delete wiz;
+    delete sol2;
 }
 
-TEST_CASE("test SpellCaster", "[SpellCaster]") {
-    Wizard* wiz = new Wizard("Wiz");
-    Soldier* sol = new Soldier("Sol");
+TEST_CASE("test Rogue", "[Rogue]") {
+    Soldier* sol = new Soldier();
+    Rogue* rog = new Rogue();
+    Rogue* rog2 = new Rogue();
     
-    SECTION("Wizard") {
-        wiz->cast(FLAME_STRIKE, *sol);
-        REQUIRE(sol->getHp() == 80);
-        REQUIRE(wiz->getHp() == 45);
-        REQUIRE(wiz->getMana() == 60);
+    SECTION("Defaults") {
+        REQUIRE( rog->getHp() == 60 );
+        REQUIRE( rog->getMaxHp() == 60 );
+        REQUIRE( rog->getDamage() == 8 );
+        REQUIRE( rog->getTitle() == Class::ROGUE );
     }
     
-    delete wiz;
+    SECTION("Attack") {
+        sol->attack(*rog);
+        REQUIRE( rog->getHp() == (static_cast<int>(Hp::ROGUE) - static_cast<int>(Dmg::SOLDIER)) );
+        REQUIRE( sol->getHp() == (static_cast<int>(Hp::SOLDIER) - static_cast<int>(Dmg::ROGUE)/2) );
+        
+        rog->restoreHp(1000);
+        sol->restoreHp(1000);
+        REQUIRE( rog->getHp() == static_cast<int>(Hp::ROGUE) );
+        REQUIRE( sol->getHp() == static_cast<int>(Hp::SOLDIER) );
+        
+        rog->attack(*sol);
+        REQUIRE( sol->getHp() == (static_cast<int>(Hp::SOLDIER) - static_cast<int>(Dmg::ROGUE)) );
+        REQUIRE( rog->getHp() == static_cast<int>(Hp::ROGUE) );
+    }
+    
+    SECTION("Limit") {
+        for ( int i = 0; i < 16; i++ ) {
+            rog->attack(*rog2);
+        }
+        REQUIRE( rog2->getHp() >= 0 );
+        REQUIRE( rog->getHp() == static_cast<int>(Hp::ROGUE) );
+        
+        REQUIRE_THROWS_AS( rog2->attack(*rog), DeadActionException );
+    }
+    
     delete sol;
+    delete rog;
+    delete rog2;
 }
