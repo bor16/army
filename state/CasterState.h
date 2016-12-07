@@ -3,9 +3,8 @@
 
 #include <iostream>
 #include "State.h"
-#include "../interface/ICasterState.h"
 
-class CasterState: public State, ICasterState {
+class CasterState: public State {
     protected:
         int mana;
         int maxMana;
@@ -13,7 +12,7 @@ class CasterState: public State, ICasterState {
         void calcMana(int points);
         
     public:
-        CasterState(const std::string& name, UnitClass title, int maxHp, int damage, int maxMana);
+        CasterState(Class title, int maxHp, int damage, int maxMana);
         virtual ~CasterState();
         
         const int getMana() const;
