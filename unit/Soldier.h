@@ -3,15 +3,14 @@
 
 #include <iostream>
 #include "Unit.h"
-#include "../state/UnitClass.h"
 
 class Soldier : public Unit {
     public:
-        Soldier(const std::string& name, UnitClass title=UnitClass::SOLDIER, int maxHp=100, int damage=10);
+        Soldier(Class title=Class::SOLDIER, int maxHp=static_cast<int>(Hp::SOLDIER), int damage=static_cast<int>(Dmg::SOLDIER));
         virtual ~Soldier();
         
-        virtual void attack(Unit& target);
-        virtual void counterAttack(Unit& target);
+        void attack(Unit& target);
+        void counterAttack(Unit& target);
 };
 
 #endif //SOLDIER_H
