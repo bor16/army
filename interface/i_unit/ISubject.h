@@ -3,13 +3,12 @@
 
 #include <iostream>
 
-class Necromancer;
 class ISubject {
     public:
         virtual ~ISubject() {}
         
-        virtual void attach(Necromancer* observer) = 0;
-        virtual void detach(Necromancer* observer) = 0;
+        virtual void attach(IObserver* observer) = 0;
+        virtual void detach(IObserver* observer) = 0;
         virtual void notify() = 0;
 };
 
