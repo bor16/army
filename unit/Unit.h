@@ -4,13 +4,13 @@
 #include <iostream>
 #include <set>
 #include "../state/State.h"
+#include "../interface/i_unit/IObserver.h"
 #include "../interface/i_unit/ISubject.h"
 
-class Necromancer;
 class Unit : public ISubject {
     protected:
         State* state;
-        std::set<Necromancer*>* observers;
+        std::set<IObserver*>* observers;
         
     public:
         Unit(State* state);
@@ -27,8 +27,8 @@ class Unit : public ISubject {
         virtual void attack(Unit& target) = 0;
         virtual void counterAttack(Unit& target) = 0;
         
-        void attach(Necromancer* observer);
-        void detach(Necromancer* observer);
+        void attach(IObserver* observer);
+        void detach(IObserver* observer);
         void notify();
 };
 

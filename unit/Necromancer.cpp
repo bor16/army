@@ -29,16 +29,16 @@ void Necromancer::update() {
     this->restoreHp(20);
 }
 
-void Necromancer::attachSubject(Unit* subject) {
+void Necromancer::attachSubject(ISubject* subject) {
     subjects->insert(subject);
 }
 
-void Necromancer::detachSubject(Unit* subject) {
+void Necromancer::detachSubject(ISubject* subject) {
     subjects->erase(subject);
 }
 
 void Necromancer::notifySubject() {
-    std::set<Unit*>::iterator subject;
+    std::set<ISubject*>::iterator subject;
     
     for ( subject = subjects->begin(); subject != subjects->end(); ++subject ) {
         (*subject)->detach(this);
