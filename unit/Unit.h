@@ -4,7 +4,7 @@
 #include <iostream>
 #include <set>
 #include "../state/State.h"
-#include "../interface/ISubject.h"
+#include "../interface/i_unit/ISubject.h"
 
 class Necromancer;
 class Unit : public ISubject {

@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "Wizard.h"
-#include "../interface/IObserver.h"
+#include "../interface/i_unit/IObserver.h"
 
 class Necromancer : public Wizard, public IObserver {
     protected:
