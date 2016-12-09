@@ -26,7 +26,8 @@ class Caster : public Soldier {
         void restoreMana(int points);
         
         Spell& findSpell(SpellTitle title) const;
-        virtual void cast(SpellTitle title, Unit& target) = 0;
+        virtual void cast(Harm& spell, Unit& target) = 0;
+        virtual void cast(Restore& spell, Unit& target) = 0;
 };
 
 #endif //CASTER_H
