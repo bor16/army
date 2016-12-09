@@ -2,10 +2,9 @@
 #define FLAMESTRIKE_H
 
 #include <iostream>
-#include "Spell.h"
-#include "../interface/i_spell/IOffensive.h"
+#include "Offensive.h"
 
-class FlameStrike: public Spell, public IOffensive {
+class FlameStrike: public Offensive {
     public:
         FlameStrike(SpellTitle title=SpellTitle::FLAME_STRIKE, int power=static_cast<int>(Power::FLAME_STRIKE), int cost=static_cast<int>(Cost::FLAME_STRIKE));
         virtual ~FlameStrike();

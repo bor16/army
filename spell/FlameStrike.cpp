@@ -1,6 +1,6 @@
 #include "FlameStrike.h"
 
-FlameStrike::FlameStrike(SpellTitle title, int power, int cost) : Spell(title, power, cost) {}
+FlameStrike::FlameStrike(SpellTitle title, int power, int cost) : Offensive(title, power, cost) {}
 
 FlameStrike::~FlameStrike() {}
 
