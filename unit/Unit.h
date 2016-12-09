@@ -4,8 +4,8 @@
 #include <iostream>
 #include <set>
 #include "../state/State.h"
-#include "../interface/i_unit/IObserver.h"
-#include "../interface/i_unit/ISubject.h"
+#include "../interface/IObserver.h"
+#include "../interface/ISubject.h"
 
 class Unit : public ISubject {
     protected:
