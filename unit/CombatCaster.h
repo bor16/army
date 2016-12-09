@@ -6,7 +6,7 @@
 
 class CombatCaster : public Caster {
     public:
-        CombatCaster(Class title=Class::WIZARD, int maxHp=static_cast<int>(Hp::WIZARD), int damage=static_cast<int>(Dmg::WIZARD), int maxMana=static_cast<int>(Mana::WIZARD));
+        CombatCaster(Class title=Class::WIZARD, int maxHp=(int)Hp::WIZARD, int damage=(int)Dmg::WIZARD, int maxMana=(int)Mana::WIZARD);
         virtual ~CombatCaster();
         
         virtual void cast(Harm& spell, Unit& target) = 0;

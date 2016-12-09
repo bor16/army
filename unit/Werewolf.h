@@ -10,7 +10,7 @@ class Werewolf : public Soldier {
         State* altState;
         
     public:
-        Werewolf(Class title=Class::WEREWOLF, int maxHp=static_cast<int>(Hp::WEREWOLF), int damage=static_cast<int>(Dmg::WEREWOLF));
+        Werewolf(Class title=Class::WEREWOLF, int maxHp=(int)Hp::WEREWOLF, int damage=(int)Dmg::WEREWOLF);
         virtual ~Werewolf();
         
         void shapeShift();

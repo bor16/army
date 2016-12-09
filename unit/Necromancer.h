@@ -9,7 +9,7 @@ class Necromancer : public Wizard, public IObserver {
         std::set<ISubject*>* subjects;
         
     public:
-        Necromancer(Class title=Class::NECROMANCER, int maxHp=static_cast<int>(Hp::NECROMANCER), int damage=static_cast<int>(Dmg::NECROMANCER), int maxMana=static_cast<int>(Mana::NECROMANCER));
+        Necromancer(Class title=Class::NECROMANCER, int maxHp=(int)Hp::NECROMANCER, int damage=(int)Dmg::NECROMANCER, int maxMana=(int)Mana::NECROMANCER);
         virtual ~Necromancer();
         
         void attack(Unit& target);
