@@ -6,7 +6,7 @@
 
 class FlameStrike: public Harm {
     public:
-        FlameStrike(SpellTitle title=SpellTitle::FLAME_STRIKE, int power=static_cast<int>(Power::FLAME_STRIKE), int cost=static_cast<int>(Cost::FLAME_STRIKE));
+        FlameStrike(SpellTitle title=SpellTitle::FLAME_STRIKE, int power=(int)Power::FLAME_STRIKE, int cost=(int)Cost::FLAME_STRIKE);
         virtual ~FlameStrike();
         
         void action(Unit& target, int modifier);

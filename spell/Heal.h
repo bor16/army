@@ -6,7 +6,7 @@
 
 class Heal: public Restore {
     public:
-        Heal(SpellTitle title=SpellTitle::HEAL, int power=static_cast<int>(Power::HEAL), int cost=static_cast<int>(Cost::HEAL));
+        Heal(SpellTitle title=SpellTitle::HEAL, int power=(int)Power::HEAL, int cost=(int)Cost::HEAL);
         virtual ~Heal();
         
         void action(Unit& target, int modifier);

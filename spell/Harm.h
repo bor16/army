@@ -6,7 +6,7 @@
 
 class Harm: public Spell {
     public:
-        Harm(SpellTitle title=SpellTitle::HEAL, int power=static_cast<int>(Power::HEAL), int cost=static_cast<int>(Cost::HEAL));
+        Harm(SpellTitle title=SpellTitle::HEAL, int power=(int)Power::HEAL, int cost=(int)Cost::HEAL);
         virtual ~Harm();
         
         virtual void action(Unit& target, int modifier) = 0;
