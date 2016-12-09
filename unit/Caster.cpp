@@ -40,16 +40,3 @@ Spell& Caster::findSpell(SpellTitle title) const {
     
     return *spell;
 }
-
-void Caster::cast(SpellTitle title, Unit& target) {
-    Spell& spell = findSpell(title);
-    
-    this->state->ensureIsAlive();
-    
-    this->reduceMana(spell.getCost());
-    spell.action(target);
-    
-    if ( target.getHp() != 0 ) {
-        target.counterAttack(*this);
-    }
-}

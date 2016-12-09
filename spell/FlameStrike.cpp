@@ -1,9 +1,9 @@
 #include "FlameStrike.h"
 
-FlameStrike::FlameStrike(SpellTitle title, int power, int cost) : Spell(title, power, cost) {}
+FlameStrike::FlameStrike(SpellTitle title, int power, int cost) : Harm(title, power, cost) {}
 
 FlameStrike::~FlameStrike() {}
 
-void FlameStrike::action(Unit& target) {
-    target.takeMagDamage(this->getPower());
+void FlameStrike::action(Unit& target, int modifier) {
+    Harm::action(target, modifier);
 }

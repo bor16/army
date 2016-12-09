@@ -19,7 +19,7 @@ class Spell {
         const int getCost() const;
         SpellTitle getTitle() const;
         
-        virtual void action(Unit& target) = 0;
+        virtual void action(Unit& target, int modifier) = 0;
 };
 
 #endif //SPELL_H

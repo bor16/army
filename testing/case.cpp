@@ -1,5 +1,10 @@
 #include "../unit/Soldier.h"
 #include "../unit/Rogue.h"
+#include "../unit/Wizard.h"
+#include "../unit/Healer.h"
+#include "../unit/Priest.h"
+#include "../unit/Necromancer.h"
+#include "../spell/Spell.h"
 #include "catch.hpp"
 
 TEST_CASE("test Soldier", "[Soldier]") {
@@ -15,8 +20,8 @@ TEST_CASE("test Soldier", "[Soldier]") {
     
     SECTION("Attack") {
         sol->attack(*sol2);
-        REQUIRE( sol2->getHp() == (static_cast<int>(Hp::SOLDIER) - static_cast<int>(Dmg::SOLDIER)) );
-        REQUIRE( sol->getHp() == (static_cast<int>(Hp::SOLDIER) - static_cast<int>(Dmg::SOLDIER)/2) );
+        REQUIRE( sol2->getHp() == ((int)Hp::SOLDIER - (int)Dmg::SOLDIER) );
+        REQUIRE( sol->getHp() == ((int)Hp::SOLDIER - (int)Dmg::SOLDIER/2) );
     }
     
     SECTION("Limit") {
@@ -47,17 +52,17 @@ TEST_CASE("test Rogue", "[Rogue]") {
     
     SECTION("Attack") {
         sol->attack(*rog);
-        REQUIRE( rog->getHp() == (static_cast<int>(Hp::ROGUE) - static_cast<int>(Dmg::SOLDIER)) );
-        REQUIRE( sol->getHp() == (static_cast<int>(Hp::SOLDIER) - static_cast<int>(Dmg::ROGUE)/2) );
+        REQUIRE( rog->getHp() == ((int)Hp::ROGUE - (int)Dmg::SOLDIER) );
+        REQUIRE( sol->getHp() == ((int)Hp::SOLDIER - (int)Dmg::ROGUE/2) );
         
         rog->restoreHp(1000);
         sol->restoreHp(1000);
-        REQUIRE( rog->getHp() == static_cast<int>(Hp::ROGUE) );
-        REQUIRE( sol->getHp() == static_cast<int>(Hp::SOLDIER) );
+        REQUIRE( rog->getHp() == (int)Hp::ROGUE );
+        REQUIRE( sol->getHp() == (int)Hp::SOLDIER );
         
         rog->attack(*sol);
-        REQUIRE( sol->getHp() == (static_cast<int>(Hp::SOLDIER) - static_cast<int>(Dmg::ROGUE)) );
-        REQUIRE( rog->getHp() == static_cast<int>(Hp::ROGUE) );
+        REQUIRE( sol->getHp() == ((int)Hp::SOLDIER - (int)Dmg::ROGUE) );
+        REQUIRE( rog->getHp() == (int)Hp::ROGUE );
     }
     
     SECTION("Limit") {
@@ -65,7 +70,7 @@ TEST_CASE("test Rogue", "[Rogue]") {
             rog->attack(*rog2);
         }
         REQUIRE( rog2->getHp() >= 0 );
-        REQUIRE( rog->getHp() == static_cast<int>(Hp::ROGUE) );
+        REQUIRE( rog->getHp() == (int)Hp::ROGUE );
         
         REQUIRE_THROWS_AS( rog2->attack(*rog), DeadActionException );
     }
@@ -73,4 +78,45 @@ TEST_CASE("test Rogue", "[Rogue]") {
     delete sol;
     delete rog;
     delete rog2;
+}
+
+TEST_CASE("test Wizard", "[Wizard]") {
+    Wizard* wiz = new Wizard();
+    Healer* hea = new Healer();
+    Priest* pri = new Priest();
+    Soldier* sol = new Soldier();
+    
+    SECTION("Defaults") {
+        REQUIRE( wiz->getHp() == 60 );
+        REQUIRE( wiz->getMaxHp() == 60 );
+        REQUIRE( wiz->getDamage() == 4 );
+        REQUIRE( wiz->getMana() == 200 );
+        REQUIRE( wiz->getTitle() == Class::WIZARD );
+    }
+    
+    SECTION("Cast") {
+        CHECK( wiz->getHp() == 60 );
+        wiz->cast(dynamic_cast<Harm&>(wiz->findSpell(SpellTitle::FLAME_STRIKE)), *sol);
+        REQUIRE( sol->getHp() == ((int)Hp::SOLDIER - (int)Power::FLAME_STRIKE) );
+        CHECK( wiz->getHp() == 55 );
+        wiz->cast(dynamic_cast<Restore&>(wiz->findSpell(SpellTitle::HEAL)), *sol);
+        REQUIRE( sol->getHp() == (int)Hp::SOLDIER - (int)Power::FLAME_STRIKE/2 );
+        REQUIRE( wiz->getHp() == 55 );
+        
+        sol->restoreHp(1000);
+        hea->cast(dynamic_cast<Harm&>(hea->findSpell(SpellTitle::FLAME_STRIKE)), *sol);
+        REQUIRE( sol->getHp() == (int)Hp::SOLDIER - (int)Power::FLAME_STRIKE/2 );
+        hea->cast(dynamic_cast<Restore&>(hea->findSpell(SpellTitle::HEAL)), *sol);
+        REQUIRE( sol->getHp() == (int)Hp::SOLDIER );
+        
+        pri->cast(dynamic_cast<Harm&>(pri->findSpell(SpellTitle::FLAME_STRIKE)), *sol);
+        REQUIRE( sol->getHp() == (int)Hp::SOLDIER - (int)Power::FLAME_STRIKE/2 );
+        pri->cast(dynamic_cast<Restore&>(pri->findSpell(SpellTitle::HEAL)), *sol);
+        REQUIRE( sol->getHp() == (int)Hp::SOLDIER );
+    }
+    
+    delete wiz;
+    delete hea;
+    delete pri;
+    delete sol;
 }

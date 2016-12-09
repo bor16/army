@@ -10,7 +10,7 @@ class Berserker : public Soldier {
         BerserkerState* state;
     
     public:
-        Berserker(Class title=Class::BERSERKER, int maxHp=static_cast<int>(Hp::BERSERKER), int damage=static_cast<int>(Dmg::BERSERKER));
+        Berserker(Class title=Class::BERSERKER, int maxHp=(int)Hp::BERSERKER, int damage=(int)Dmg::BERSERKER);
         virtual ~Berserker();
 };
 

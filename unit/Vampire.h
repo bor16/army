@@ -6,7 +6,7 @@
 
 class Vampire : public Soldier {
     public:
-        Vampire(Class title=Class::VAMPIRE, int maxHp=static_cast<int>(Hp::VAMPIRE), int damage=static_cast<int>(Dmg::VAMPIRE));
+        Vampire(Class title=Class::VAMPIRE, int maxHp=(int)Hp::VAMPIRE, int damage=(int)Dmg::VAMPIRE);
         virtual ~Vampire();
         
         void attack(Unit& target);

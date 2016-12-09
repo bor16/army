@@ -1,5 +1,4 @@
 #include "Unit.h"
-#include "Necromancer.h"
 
 Unit::Unit(State* state) : state(state) {}
 
@@ -43,18 +42,18 @@ void Unit::counterAttack(Unit& target) {
     target.takeDamage(this->getDamage()/2);
 }
 
-void Unit::attach(Necromancer* observer) {
+void Unit::attach(IObserver* observer) {
     observers->insert(observer);
     observer->attachSubject(this);
 }
 
-void Unit::detach(Necromancer* observer) {
+void Unit::detach(IObserver* observer) {
     observers->erase(observer);
     observer->detachSubject(this);
 }
 
 void Unit::notify() {
-    std::set<Necromancer*>::iterator observer;
+    std::set<IObserver*>::iterator observer;
     
     for ( observer = observers->begin(); observer != observers->end(); ++observer ) {
         (*observer)->update();

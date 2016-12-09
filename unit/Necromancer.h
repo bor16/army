@@ -3,22 +3,21 @@
 
 #include <iostream>
 #include "Wizard.h"
-#include "../interface/IObserver.h"
 
 class Necromancer : public Wizard, public IObserver {
     protected:
-        std::set<Unit*>* subjects;
+        std::set<ISubject*>* subjects;
         
     public:
-        Necromancer(Class title=Class::NECROMANCER, int maxHp=static_cast<int>(Hp::NECROMANCER), int damage=static_cast<int>(Dmg::NECROMANCER), int maxMana=static_cast<int>(Mana::NECROMANCER));
+        Necromancer(Class title=Class::NECROMANCER, int maxHp=(int)Hp::NECROMANCER, int damage=(int)Dmg::NECROMANCER, int maxMana=(int)Mana::NECROMANCER);
         virtual ~Necromancer();
         
         void attack(Unit& target);
         void counterAttack(Unit& target);
         
         void update();
-        void attachSubject(Unit* subject);
-        void detachSubject(Unit* subject);
+        void attachSubject(ISubject* subject);
+        void detachSubject(ISubject* subject);
         void notifySubject();
 };
 
