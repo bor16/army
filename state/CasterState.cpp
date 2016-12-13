@@ -1,6 +1,6 @@
 #include "CasterState.h"
 
-CasterState::CasterState(Class title, int maxHp, int damage, int maxMana) : State(title, maxHp, damage), mana(maxMana), maxMana(maxMana) {}
+CasterState::CasterState(unitClass title, int maxHp, int damage, int maxMana) : State(title, maxHp, damage), mana(maxMana), maxMana(maxMana) {}
 
 CasterState::~CasterState() {}
 
@@ -17,17 +17,15 @@ void CasterState::calcMana(int points) {
         points = 0;
     }
     if ( points > this->maxMana ) {
-        points > this->maxMana;
+        points = this->maxMana;
     }
     this->mana = points;
 }
 
 void CasterState::reduceMana(int cost) {
-    ensureIsAlive();
     calcMana(-cost);
 }
 
 void CasterState::restoreMana(int points) {
-    ensureIsAlive();
     calcMana(points);
 }

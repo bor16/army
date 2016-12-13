@@ -7,23 +7,22 @@
 
 class State {
     protected:
+        unitClass title;
         int hp;
         int maxHp;
         int damage;
-        Class title;
         
         void calcHp(int points);
         
     public:
-        State(Class title, int maxHp, int damage);
+        State(unitClass title, int maxHp, int damage);
         virtual ~State();
         
-        const int getHp() const;
+        unitClass getTitle() const;
+        /*virtual */const int getHp() const;
         const int getMaxHp() const;
         const int getDamage() const;
-        Class getTitle() const;
         
-        void ensureIsAlive();
         void setHp(int hp);
         
         virtual void takeDamage(int damage);

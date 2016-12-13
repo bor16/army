@@ -1,5 +1,5 @@
-#ifndef CASTERSTATE_H
-#define CASTERSTATE_H
+#ifndef CASTER_STATE_H
+#define CASTER_STATE_H
 
 #include <iostream>
 #include "State.h"
@@ -12,14 +12,14 @@ class CasterState: public State {
         void calcMana(int points);
         
     public:
-        CasterState(Class title, int maxHp, int damage, int maxMana);
+        CasterState(unitClass title, int maxHp, int damage, int maxMana);
         virtual ~CasterState();
         
         const int getMana() const;
         const int getMaxMana() const;
         
-        void reduceMana(int cost);
-        void restoreMana(int points);
+        virtual void reduceMana(int cost);
+        virtual void restoreMana(int points);
 };
 
-#endif //CASTERSTATE_H
+#endif //CASTER_STATE_H
