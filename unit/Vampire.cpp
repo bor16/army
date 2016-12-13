@@ -1,27 +1,19 @@
 #include "Vampire.h"
 
-Vampire::Vampire(Class title, int maxHp, int damage) : Soldier(title, maxHp, damage) {}
-
-Vampire::~Vampire() {}
-
-void Vampire::attack(Unit& target) {
-    int points = target.getHp();
-    
-    this->state->ensureIsAlive();
-    
-    target.takeDamage(this->getDamage());
-    points -= target.getHp();
-    this->restoreHp(points/2);
-    
-    if ( target.getHp() != 0 ) {
-        target.counterAttack(*this);
-    }
+Vampire::Vampire(unitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
+    this->action = new VampireAction();
 }
 
-void Vampire::counterAttack(Unit& target) {
-    int points = target.getHp();
-    
-    target.takeDamage(this->getDamage()/2);
-    points -= target.getHp();
-    this->restoreHp(points/2);
+Vampire::~Vampire() {
+    delete action;
+}
+
+void Vampire::attack(Unit& target, Unit& attacker) {
+    this->ensureIsAlive();
+    this->action->attack(target, attacker);
+}
+
+void Vampire::counterAttack(Unit& target, Unit& attacker) {
+    this->ensureIsAlive();
+    this->action->attack(target, attacker);
 }
