@@ -7,17 +7,17 @@
 
 class Spell {
     protected:
+        SpellTitle title;
         int power;
         int cost;
-        SpellTitle title;
         
     public:
         Spell(SpellTitle title, int power, int cost);
         virtual ~Spell();
         
+        SpellTitle getTitle() const;
         const int getPower() const;
         const int getCost() const;
-        SpellTitle getTitle() const;
         
         virtual void action(Unit& target, int modifier) = 0;
 };
