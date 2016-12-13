@@ -6,7 +6,7 @@
 
 class WolfState : public State {
     public:
-        WolfState(unitClass title, int maxHp, int damage);
+        WolfState(UnitClass title, int maxHp, int damage);
         virtual ~WolfState();
         
         void takeMagDamage(int damage);

@@ -17,7 +17,7 @@ TEST_CASE("test Soldier", "[Soldier]") {
         REQUIRE( sol->getHp() == 100 );
         REQUIRE( sol->getMaxHp() == 100 );
         REQUIRE( sol->getDamage() == 10 );
-        REQUIRE( sol->getTitle() == unitClass::SOLDIER );
+        REQUIRE( sol->getTitle() == UnitClass::SOLDIER );
     }
     
     SECTION("Attack") {
@@ -49,7 +49,7 @@ TEST_CASE("test Rogue", "[Rogue]") {
         REQUIRE( rog->getHp() == 60 );
         REQUIRE( rog->getMaxHp() == 60 );
         REQUIRE( rog->getDamage() == 8 );
-        REQUIRE( rog->getTitle() == unitClass::ROGUE );
+        REQUIRE( rog->getTitle() == UnitClass::ROGUE );
     }
     
     SECTION("Attack") {
@@ -104,7 +104,7 @@ TEST_CASE("test Wizard", "[Wizard]") {
         REQUIRE( wiz->getMaxHp() == 60 );
         REQUIRE( wiz->getDamage() == 4 );
         REQUIRE( wiz->getMana() == 200 );
-        REQUIRE( wiz->getTitle() == unitClass::WIZARD );
+        REQUIRE( wiz->getTitle() == UnitClass::WIZARD );
     }
     
     SECTION("Cast") {

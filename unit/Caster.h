@@ -15,7 +15,7 @@ class Caster : public Soldier {
         std::map<SpellTitle, Spell*>* spellbook;
     
     public:
-        Caster(unitClass title, int maxHp, int damage, int maxMana);
+        Caster(UnitClass title, int maxHp, int damage, int maxMana);
         virtual ~Caster();
         
         const int getMana() const;

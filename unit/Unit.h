@@ -22,7 +22,7 @@ class Unit : public ISubject {
         virtual ~Unit();
         
         //state
-        unitClass getTitle() const;
+        UnitClass getTitle() const;
         /*virtual */const int getHp() const;
         const int getMaxHp() const;
         const int getDamage() const;

@@ -6,7 +6,7 @@
 
 class HealCaster : public Caster {
     public:
-        HealCaster(unitClass title, int maxHp, int damage, int maxMana);
+        HealCaster(UnitClass title, int maxHp, int damage, int maxMana);
         virtual ~HealCaster();
         
         virtual void cast(Harm& spell, Unit& target) = 0;

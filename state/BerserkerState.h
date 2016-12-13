@@ -6,7 +6,7 @@
 
 class BerserkerState : public State {
     public:
-        BerserkerState(unitClass title, int maxHp, int damage);
+        BerserkerState(UnitClass title, int maxHp, int damage);
         virtual ~BerserkerState();
         
         void takeMagDamage(int damage);

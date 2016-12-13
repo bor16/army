@@ -1,6 +1,6 @@
 #include "Priest.h"
 
-Priest::Priest(unitClass title, int maxHp, int damage, int maxMana) : Healer(title, maxHp, damage, maxMana) {}
+Priest::Priest(UnitClass title, int maxHp, int damage, int maxMana) : Healer(title, maxHp, damage, maxMana) {}
 
 Priest::~Priest() {}
 

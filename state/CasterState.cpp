@@ -1,6 +1,6 @@
 #include "CasterState.h"
 
-CasterState::CasterState(unitClass title, int maxHp, int damage, int maxMana) : State(title, maxHp, damage), mana(maxMana), maxMana(maxMana) {}
+CasterState::CasterState(UnitClass title, int maxHp, int damage, int maxMana) : State(title, maxHp, damage), mana(maxMana), maxMana(maxMana) {}
 
 CasterState::~CasterState() {}
 

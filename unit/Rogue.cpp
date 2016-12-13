@@ -1,6 +1,6 @@
 #include "Rogue.h"
 
-Rogue::Rogue(unitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
+Rogue::Rogue(UnitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
     this->action = new RogueAction();
 }
 

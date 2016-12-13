@@ -11,7 +11,7 @@ class WerewolfState : public State {
         State* alternative;
         
     public:
-        WerewolfState(unitClass title, int maxHp, int damage);
+        WerewolfState(UnitClass title, int maxHp, int damage);
         virtual ~WerewolfState();
         
         const int getHp() const;

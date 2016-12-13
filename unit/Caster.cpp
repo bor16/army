@@ -1,6 +1,6 @@
 #include "Caster.h"
 
-Caster::Caster(unitClass title, int maxHp, int damage, int maxMana) : Soldier(title, maxHp, damage) {
+Caster::Caster(UnitClass title, int maxHp, int damage, int maxMana) : Soldier(title, maxHp, damage) {
     this->state = new CasterState(title, maxHp, damage, maxMana);
     this->spellbook = new std::map<SpellTitle, Spell*>();
     

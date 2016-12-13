@@ -10,7 +10,7 @@ class Rogue : public Soldier {
         RogueAction* action;
     
     public:
-        Rogue(unitClass title=unitClass::ROGUE, int maxHp=(int)Hp::ROGUE, int damage=(int)Dmg::ROGUE);
+        Rogue(UnitClass title=UnitClass::ROGUE, int maxHp=(int)Hp::ROGUE, int damage=(int)Dmg::ROGUE);
         virtual ~Rogue();
         
         void attack(Unit& target, Unit& attacker);

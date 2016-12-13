@@ -1,6 +1,6 @@
 #include "Vampire.h"
 
-Vampire::Vampire(unitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
+Vampire::Vampire(UnitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
     this->action = new VampireAction();
 }
 

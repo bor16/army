@@ -1,6 +1,6 @@
 #include "Berserker.h"
 
-Berserker::Berserker(unitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
+Berserker::Berserker(UnitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
     this->state = new BerserkerState(title, maxHp, damage);
 }
 

@@ -7,7 +7,7 @@
 
 class State {
     protected:
-        unitClass title;
+        UnitClass title;
         int hp;
         int maxHp;
         int damage;
@@ -15,10 +15,10 @@ class State {
         void calcHp(int points);
         
     public:
-        State(unitClass title, int maxHp, int damage);
+        State(UnitClass title, int maxHp, int damage);
         virtual ~State();
         
-        unitClass getTitle() const;
+        UnitClass getTitle() const;
         /*virtual */const int getHp() const;
         const int getMaxHp() const;
         const int getDamage() const;

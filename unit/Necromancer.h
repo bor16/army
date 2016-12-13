@@ -11,7 +11,7 @@ class Necromancer : public Wizard, public IObserver {
         std::set<ISubject*>* subjects;
         
     public:
-        Necromancer(unitClass title=unitClass::NECROMANCER, int maxHp=(int)Hp::NECROMANCER, int damage=(int)Dmg::NECROMANCER, int maxMana=(int)Mana::NECROMANCER);
+        Necromancer(UnitClass title=UnitClass::NECROMANCER, int maxHp=(int)Hp::NECROMANCER, int damage=(int)Dmg::NECROMANCER, int maxMana=(int)Mana::NECROMANCER);
         virtual ~Necromancer();
         
         void attack(Unit& target, Unit& attacker);

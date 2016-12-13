@@ -1,6 +1,6 @@
 #include "WolfState.h"
 
-WolfState::WolfState(unitClass title, int maxHp, int damage) : State(title, maxHp, damage) {}
+WolfState::WolfState(UnitClass title, int maxHp, int damage) : State(title, maxHp, damage) {}
 
 WolfState::~WolfState() {}
 

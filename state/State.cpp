@@ -1,6 +1,6 @@
 #include "State.h"
 
-State::State(unitClass title, int maxHp, int damage) : title(title), hp(maxHp), maxHp(maxHp), damage(damage) {}
+State::State(UnitClass title, int maxHp, int damage) : title(title), hp(maxHp), maxHp(maxHp), damage(damage) {}
 
 State::~State() {}
 
@@ -13,7 +13,7 @@ const int State::getMaxHp() const {
 const int State::getDamage() const {
     return this->damage;
 }
-unitClass State::getTitle() const {
+UnitClass State::getTitle() const {
     return this->title;
 }
 

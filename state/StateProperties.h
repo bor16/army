@@ -1,7 +1,7 @@
 #ifndef STATE_PROPERTIES_H
 #define STATE_PROPERTIES_H
 
-enum class unitClass {
+enum class UnitClass {
     SOLDIER,
     ROGUE,
     WEREWOLF,

@@ -1,6 +1,6 @@
 #include "Wizard.h"
 
-Wizard::Wizard(unitClass title, int maxHp, int damage, int maxMana) : Caster(title, maxHp, damage, maxMana) {}
+Wizard::Wizard(UnitClass title, int maxHp, int damage, int maxMana) : Caster(title, maxHp, damage, maxMana) {}
 
 Wizard::~Wizard() {}
 

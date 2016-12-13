@@ -12,7 +12,7 @@ class CasterState: public State {
         void calcMana(int points);
         
     public:
-        CasterState(unitClass title, int maxHp, int damage, int maxMana);
+        CasterState(UnitClass title, int maxHp, int damage, int maxMana);
         virtual ~CasterState();
         
         const int getMana() const;

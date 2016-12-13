@@ -10,7 +10,7 @@ class Vampire : public Soldier {
         VampireAction* action;
         
     public:
-        Vampire(unitClass title=unitClass::VAMPIRE, int maxHp=(int)Hp::VAMPIRE, int damage=(int)Dmg::VAMPIRE);
+        Vampire(UnitClass title=UnitClass::VAMPIRE, int maxHp=(int)Hp::VAMPIRE, int damage=(int)Dmg::VAMPIRE);
         virtual ~Vampire();
         
         void attack(Unit& target, Unit& attacker);

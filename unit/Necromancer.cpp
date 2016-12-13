@@ -1,6 +1,6 @@
 #include "Necromancer.h"
 
-Necromancer::Necromancer(unitClass title, int maxHp, int damage, int maxMana) : Wizard(title, maxHp, damage, maxMana) {
+Necromancer::Necromancer(UnitClass title, int maxHp, int damage, int maxMana) : Wizard(title, maxHp, damage, maxMana) {
     this->action = new NecromancerAction();
     this->subjects = NULL;
 }

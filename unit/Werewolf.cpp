@@ -1,6 +1,6 @@
 #include "Werewolf.h"
 
-Werewolf::Werewolf(unitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
+Werewolf::Werewolf(UnitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
     this->state = new WerewolfState(title, maxHp, damage);
 }
 

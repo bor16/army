@@ -1,6 +1,6 @@
 #include "HealCaster.h"
 
-HealCaster::HealCaster(unitClass title, int maxHp, int damage, int maxMana) : Caster(title, maxHp, damage, maxMana) {}
+HealCaster::HealCaster(UnitClass title, int maxHp, int damage, int maxMana) : Caster(title, maxHp, damage, maxMana) {}
 
 HealCaster::~HealCaster() {}
 

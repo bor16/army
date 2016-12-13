@@ -10,7 +10,7 @@ class Werewolf : public Soldier {
         WerewolfState* state;
         
     public:
-        Werewolf(unitClass title=unitClass::WEREWOLF, int maxHp=(int)Hp::WEREWOLF, int damage=(int)Dmg::WEREWOLF);
+        Werewolf(UnitClass title=UnitClass::WEREWOLF, int maxHp=(int)Hp::WEREWOLF, int damage=(int)Dmg::WEREWOLF);
         virtual ~Werewolf();
         
         const int getHp() const;

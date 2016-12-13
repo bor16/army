@@ -6,7 +6,7 @@
 
 class Soldier : public Unit {
     public:
-        Soldier(unitClass title=unitClass::SOLDIER, int maxHp=(int)Hp::SOLDIER, int damage=(int)Dmg::SOLDIER);
+        Soldier(UnitClass title=UnitClass::SOLDIER, int maxHp=(int)Hp::SOLDIER, int damage=(int)Dmg::SOLDIER);
         virtual ~Soldier();
 };
 

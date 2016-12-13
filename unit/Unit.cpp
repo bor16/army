@@ -13,7 +13,7 @@ void Unit::ensureIsAlive() {
     }
 }
 
-unitClass Unit::getTitle() const {
+UnitClass Unit::getTitle() const {
     return this->state->getTitle();
 }
 const int Unit::getHp() const {
