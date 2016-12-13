@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c -std=c++11
+CFLAGS=-c -std=c++11 -Wall
 
 SOURCES=$(shell find . -type f -name '*.cpp' )
 OBJECTS=$(SOURCES:.cpp=.o)
