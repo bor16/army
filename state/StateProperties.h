@@ -1,7 +1,7 @@
-#ifndef STATEPROPERTIES_H
-#define STATEPROPERTIES_H
+#ifndef STATE_PROPERTIES_H
+#define STATE_PROPERTIES_H
 
-enum class Class {
+enum class unitClass {
     SOLDIER,
     ROGUE,
     WEREWOLF,
@@ -48,4 +48,4 @@ enum class Mana {
     NECROMANCER = 100
 };
 
-#endif //STATEPROPERTIES_H
+#endif //STATE_PROPERTIES_H

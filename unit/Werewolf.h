@@ -3,17 +3,23 @@
 
 #include <iostream>
 #include "Soldier.h"
-#include "../state/WolfState.h"
+#include "../state/WerewolfState.h"
 
 class Werewolf : public Soldier {
     protected:
-        State* altState;
+        WerewolfState* state;
         
     public:
-        Werewolf(Class title=Class::WEREWOLF, int maxHp=(int)Hp::WEREWOLF, int damage=(int)Dmg::WEREWOLF);
+        Werewolf(unitClass title=unitClass::WEREWOLF, int maxHp=(int)Hp::WEREWOLF, int damage=(int)Dmg::WEREWOLF);
         virtual ~Werewolf();
         
+        const int getHp() const;
+        
         void shapeShift();
+        
+        void takeDamage(int damage);
+        void takeMagDamage(int damage);
+        void restoreHp(int points);
 };
 
 #endif //WEREWOLF_H

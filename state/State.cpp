@@ -1,6 +1,6 @@
 #include "State.h"
 
-State::State(Class title, int maxHp, int damage) : title(title), hp(maxHp), maxHp(maxHp), damage(damage) {}
+State::State(unitClass title, int maxHp, int damage) : title(title), hp(maxHp), maxHp(maxHp), damage(damage) {}
 
 State::~State() {}
 
@@ -13,14 +13,8 @@ const int State::getMaxHp() const {
 const int State::getDamage() const {
     return this->damage;
 }
-Class State::getTitle() const {
+unitClass State::getTitle() const {
     return this->title;
-}
-
-void State::ensureIsAlive() {
-    if ( this->hp == 0 ) {
-        throw DeadActionException();
-    }
 }
 
 void State::calcHp(int points) {

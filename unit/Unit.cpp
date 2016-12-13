@@ -1,11 +1,21 @@
 #include "Unit.h"
 
-Unit::Unit(State* state) : state(state) {}
+Unit::Unit(State* state) : state(state), action(new Action()) {}
 
 Unit::~Unit() {
     delete state;
+    delete action;
 }
 
+void Unit::ensureIsAlive() {
+    if ( this->state->getHp() == 0 ) {
+        throw DeadActionException();
+    }
+}
+
+unitClass Unit::getTitle() const {
+    return this->state->getTitle();
+}
 const int Unit::getHp() const {
     return this->state->getHp();
 }
@@ -14,9 +24,6 @@ const int Unit::getMaxHp() const {
 }
 const int Unit::getDamage() const {
     return this->state->getDamage();
-}
-Class Unit::getTitle() const {
-    return this->state->getTitle();
 }
 void Unit::takeDamage(int damage) {
     this->state->takeDamage(damage);
@@ -28,18 +35,14 @@ void Unit::restoreHp(int points) {
     this->state->restoreHp(points);
 }
 
-void Unit::attack(Unit& target) {
-    this->state->ensureIsAlive();
-    
-    target.takeDamage(this->getDamage());
-    
-    if ( target.getHp() != 0 ) {
-        target.counterAttack(*this);
-    }
+void Unit::attack(Unit& target, Unit& attacker) {
+    this->ensureIsAlive();
+    this->action->attack(target, attacker);
 }
 
-void Unit::counterAttack(Unit& target) {
-    target.takeDamage(this->getDamage()/2);
+void Unit::counterAttack(Unit& target, Unit& attacker) {
+    this->ensureIsAlive();
+    this->action->counterAttack(target, attacker);
 }
 
 void Unit::attach(IObserver* observer) {

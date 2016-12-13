@@ -1,11 +1,14 @@
 #include "Rogue.h"
 
-Rogue::Rogue(Class title, int maxHp, int damage) : Soldier(title, maxHp, damage) {}
+Rogue::Rogue(unitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
+    this->action = new RogueAction();
+}
 
-Rogue::~Rogue() {}
+Rogue::~Rogue() {
+    delete action;
+}
 
-void Rogue::attack(Unit& target) {
-    this->state->ensureIsAlive();
-    
-    target.takeDamage(this->getDamage());
+void Rogue::attack(Unit& target, Unit& attacker) {
+    this->ensureIsAlive();
+    this->action->attack(target, attacker);
 }

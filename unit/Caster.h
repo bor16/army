@@ -15,15 +15,15 @@ class Caster : public Soldier {
         std::map<SpellTitle, Spell*>* spellbook;
     
     public:
-        Caster(Class title, int maxHp, int damage, int maxMana);
+        Caster(unitClass title, int maxHp, int damage, int maxMana);
         virtual ~Caster();
         
         const int getMana() const;
         const int getMaxMana() const;
         const std::map<SpellTitle, Spell*>& openSpellbook() const;
         
-        void reduceMana(int cost);
-        void restoreMana(int points);
+        virtual void reduceMana(int cost);
+        virtual void restoreMana(int points);
         
         Spell& findSpell(SpellTitle title) const;
         virtual void cast(Harm& spell, Unit& target) = 0;

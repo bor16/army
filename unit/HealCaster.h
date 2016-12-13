@@ -1,16 +1,16 @@
-#ifndef HEALCASTER_H
-#define HEALCASTER_H
+#ifndef HEAL_CASTER_H
+#define HEAL_CASTER_H
 
 #include <iostream>
 #include "Caster.h"
 
 class HealCaster : public Caster {
     public:
-        HealCaster(Class title=Class::WIZARD, int maxHp=(int)Hp::WIZARD, int damage=(int)Dmg::WIZARD, int maxMana=(int)Mana::WIZARD);
+        HealCaster(unitClass title, int maxHp, int damage, int maxMana);
         virtual ~HealCaster();
         
         virtual void cast(Harm& spell, Unit& target) = 0;
         virtual void cast(Restore& spell, Unit& target) = 0;
 };
 
-#endif //HEALCASTER_H
+#endif //HEAL_CASTER_H

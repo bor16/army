@@ -1,28 +1,25 @@
 #include "Necromancer.h"
 
-Necromancer::Necromancer(Class title, int maxHp, int damage, int maxMana) : Wizard(title, maxHp, damage, maxMana) {}
+Necromancer::Necromancer(unitClass title, int maxHp, int damage, int maxMana) : Wizard(title, maxHp, damage, maxMana) {
+    this->action = new NecromancerAction();
+    this->subjects = NULL;
+}
 
-Necromancer::~Necromancer() {}
-
-void Necromancer::attack(Unit& target) {
-    this->state->ensureIsAlive();
-    
-    target.takeDamage(this->getDamage());
-    target.attach(this);
-    
-    if ( target.getHp() != 0 ) {
-        target.counterAttack(*this);
-    } else {
-        target.notify();
+Necromancer::~Necromancer() {
+    delete action;
+    if ( subjects != NULL ) {
+        delete subjects;
     }
 }
 
-void Necromancer::counterAttack(Unit& target) {
-    target.takeDamage(this->getDamage()/2);
-    target.attach(this);
-    if ( target.getHp() == 0 ) {
-        target.notify();
-    }
+void Necromancer::attack(Unit& target, Unit& attacker) {
+    this->ensureIsAlive();
+    this->action->attack(target, attacker);
+}
+
+void Necromancer::counterAttack(Unit& target, Unit& attacker) {
+    this->ensureIsAlive();
+    this->action->counterAttack(target, attacker);
 }
 
 void Necromancer::update() {

@@ -1,15 +1,15 @@
-#ifndef BERSERKERSTATE_H
-#define BERSERKERSTATE_H
+#ifndef BERSERKER_STATE_H
+#define BERSERKER_STATE_H
 
 #include <iostream>
 #include "State.h"
 
 class BerserkerState : public State {
     public:
-        BerserkerState(Class title, int maxHp, int damage);
+        BerserkerState(unitClass title, int maxHp, int damage);
         virtual ~BerserkerState();
         
         void takeMagDamage(int damage);
 };
 
-#endif //BERSERKERSTATE_H
+#endif //BERSERKER_STATE_H

@@ -3,17 +3,19 @@
 
 #include <iostream>
 #include "Wizard.h"
+#include "../action/NecromancerAction.h"
 
 class Necromancer : public Wizard, public IObserver {
     protected:
+        NecromancerAction* action;
         std::set<ISubject*>* subjects;
         
     public:
-        Necromancer(Class title=Class::NECROMANCER, int maxHp=(int)Hp::NECROMANCER, int damage=(int)Dmg::NECROMANCER, int maxMana=(int)Mana::NECROMANCER);
+        Necromancer(unitClass title=unitClass::NECROMANCER, int maxHp=(int)Hp::NECROMANCER, int damage=(int)Dmg::NECROMANCER, int maxMana=(int)Mana::NECROMANCER);
         virtual ~Necromancer();
         
-        void attack(Unit& target);
-        void counterAttack(Unit& target);
+        void attack(Unit& target, Unit& attacker);
+        void counterAttack(Unit& target, Unit& attacker);
         
         void update();
         void attachSubject(ISubject* subject);

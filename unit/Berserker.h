@@ -10,8 +10,10 @@ class Berserker : public Soldier {
         BerserkerState* state;
     
     public:
-        Berserker(Class title=Class::BERSERKER, int maxHp=(int)Hp::BERSERKER, int damage=(int)Dmg::BERSERKER);
+        Berserker(unitClass title=unitClass::BERSERKER, int maxHp=(int)Hp::BERSERKER, int damage=(int)Dmg::BERSERKER);
         virtual ~Berserker();
+        
+        void takeMagDamage(int damage);
 };
 
 #endif //BERSERKER_H
