@@ -1,15 +1,31 @@
 #include "Werewolf.h"
 
-Werewolf::Werewolf(Class title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
-    this->altState = new WolfState(title, maxHp, damage*2);
+Werewolf::Werewolf(unitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
+    this->state = new WerewolfState(title, maxHp, damage);
 }
 
-Werewolf::~Werewolf() {}
+Werewolf::~Werewolf() {
+    delete state;
+}
+
+const int Werewolf::getHp() const {
+    return this->state->getHp();
+}
 
 void Werewolf::shapeShift() {
-    State* tmp = this->state;
-    
-    this->altState->setHp(this->getHp());
-    this->state = this->altState;
-    this->altState = tmp;
+    this->ensureIsAlive();
+    this->state->shapeShift();
 }
+
+void Werewolf::takeDamage(int damage) {
+    this->state->takeDamage(damage);
+}
+
+void Werewolf::takeMagDamage(int damage) {
+    this->state->takeMagDamage(damage);
+}
+
+void Werewolf::restoreHp(int points) {
+    this->state->restoreHp(points);
+}
+

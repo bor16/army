@@ -1,13 +1,13 @@
 #include "Wizard.h"
 
-Wizard::Wizard(Class title, int maxHp, int damage, int maxMana) : CombatCaster(title, maxHp, damage, maxMana) {}
+Wizard::Wizard(unitClass title, int maxHp, int damage, int maxMana) : Caster(title, maxHp, damage, maxMana) {}
 
 Wizard::~Wizard() {}
 
 void Wizard::cast(Harm& spell, Unit& target) {
-    CombatCaster::cast(spell, target);
+    Caster::cast(spell, target);
 }
 
 void Wizard::cast(Restore& spell, Unit& target) {
-    CombatCaster::cast(spell, target);
+    Caster::cast(spell, target);
 }

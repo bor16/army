@@ -6,7 +6,7 @@
 
 class Priest : public Healer {
     public:
-        Priest(Class title=Class::PRIEST, int maxHp=(int)Hp::PRIEST, int damage=(int)Dmg::PRIEST, int maxMana=(int)Mana::PRIEST);
+        Priest(unitClass title=unitClass::PRIEST, int maxHp=(int)Hp::PRIEST, int damage=(int)Dmg::PRIEST, int maxMana=(int)Mana::PRIEST);
         virtual ~Priest();
         
         void cast(Harm& spell, Unit& target);
