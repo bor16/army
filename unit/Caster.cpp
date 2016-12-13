@@ -1,6 +1,6 @@
 #include "Caster.h"
 
-Caster::Caster(Class title, int maxHp, int damage, int maxMana) : Soldier(title, maxHp, damage) {
+Caster::Caster(unitClass title, int maxHp, int damage, int maxMana) : Soldier(title, maxHp, damage) {
     this->state = new CasterState(title, maxHp, damage, maxMana);
     this->spellbook = new std::map<SpellTitle, Spell*>();
     
@@ -10,6 +10,7 @@ Caster::Caster(Class title, int maxHp, int damage, int maxMana) : Soldier(title,
 
 Caster::~Caster() {
     delete state;
+    delete spellbook;
 }
 
 const int Caster::getMana() const {
@@ -23,10 +24,12 @@ const std::map<SpellTitle, Spell*>& Caster::openSpellbook() const {
 }
 
 void Caster::reduceMana(int cost) {
+    this->ensureIsAlive();
     this->state->reduceMana(cost);
 }
 
 void Caster::restoreMana(int points) {
+    this->ensureIsAlive();
     this->state->restoreMana(points);
 }
 
@@ -39,4 +42,22 @@ Spell& Caster::findSpell(SpellTitle title) const {
     spell = openSpellbook().at(title);
     
     return *spell;
+}
+
+void Caster::cast(Harm& spell, Unit& target) {
+    this->ensureIsAlive();
+    
+    this->reduceMana(spell.getCost());
+    spell.action(target, 1);
+    
+    if ( target.getHp() != 0 ) {
+        target.counterAttack(*this, target);
+    }
+}
+
+void Caster::cast(Restore& spell, Unit& target) {
+    this->ensureIsAlive();
+    
+    this->reduceMana(spell.getCost());
+    spell.action(target, 2);
 }
