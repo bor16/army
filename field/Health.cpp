@@ -1,5 +1,5 @@
 #include "Health.h"
-#include "Modifier.h"
+#include "../modifier/Modifier.h"
 
 Health::Health(int limit) {
     setLimit(limit);
