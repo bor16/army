@@ -4,30 +4,24 @@
 #include <iostream>
 #include "StateProperties.h"
 #include "../exception/Exception.h"
+#include "../field/Health.h"
 
 class State {
     protected:
         UnitClass title;
-        int hp;
-        int maxHp;
+        Health health;
         int damage;
         
-        void calcHp(int points);
-        
     public:
-        State(UnitClass title, int maxHp, int damage);
+        State(UnitClass title, Health health, int damage);
         virtual ~State();
         
         UnitClass getTitle() const;
-        /*virtual */const int getHp() const;
-        const int getMaxHp() const;
+        const Health getHealth() const;
         const int getDamage() const;
         
-        void setHp(int hp);
-        
-        virtual void takeDamage(int damage);
-        virtual void takeMagDamage(int damage);
-        virtual void restoreHp(int points);
+        virtual void takeImpact(Modifier& mod);
+        virtual void takeMagDamage(Modifier& mod);
 };
 
 #endif //STATE_H

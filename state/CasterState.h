@@ -3,23 +3,19 @@
 
 #include <iostream>
 #include "State.h"
+#include "../field/Energy.h"
 
 class CasterState: public State {
     protected:
-        int mana;
-        int maxMana;
-        
-        void calcMana(int points);
+        Energy energy;
         
     public:
-        CasterState(UnitClass title, int maxHp, int damage, int maxMana);
+        CasterState(UnitClass title, Health health, int damage, Energy energy);
         virtual ~CasterState();
         
-        const int getMana() const;
-        const int getMaxMana() const;
+        const Energy getEnergy() const;
         
-        virtual void reduceMana(int cost);
-        virtual void restoreMana(int points);
+        virtual void takeEnergyImpact(Modifier& mod);
 };
 
 #endif //CASTER_STATE_H

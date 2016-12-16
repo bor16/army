@@ -13,13 +13,12 @@ class Werewolf : public Soldier {
         Werewolf(UnitClass title=UnitClass::WEREWOLF, int maxHp=(int)Hp::WEREWOLF, int damage=(int)Dmg::WEREWOLF);
         virtual ~Werewolf();
         
-        const int getHp() const;
+        const Health getHealth() const;
         
         void shapeShift();
         
-        void takeDamage(int damage);
-        void takeMagDamage(int damage);
-        void restoreHp(int points);
+        void takeImpact(Modifier& mod);
+        void takeMagDamage(Modifier& mod);
 };
 
 #endif //WEREWOLF_H

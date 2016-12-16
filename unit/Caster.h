@@ -18,12 +18,10 @@ class Caster : public Soldier {
         Caster(UnitClass title, int maxHp, int damage, int maxMana);
         virtual ~Caster();
         
-        const int getMana() const;
-        const int getMaxMana() const;
+        const Energy getEnergy() const;
         const std::map<SpellTitle, Spell*>& openSpellbook() const;
         
-        virtual void reduceMana(int cost);
-        virtual void restoreMana(int points);
+        virtual void takeEnergyImpact(Modifier& mod);
         
         Spell& findSpell(SpellTitle title) const;
         virtual void cast(Harm& spell, Unit& target) = 0;

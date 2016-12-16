@@ -1,45 +1,23 @@
 #include "State.h"
 
-State::State(UnitClass title, int maxHp, int damage) : title(title), hp(maxHp), maxHp(maxHp), damage(damage) {}
+State::State(UnitClass title, Health health, int damage) : title(title), health(health), damage(damage) {}
 
 State::~State() {}
 
-const int State::getHp() const {
-    return this->hp;
+UnitClass State::getTitle() const {
+    return this->title;
 }
-const int State::getMaxHp() const {
-    return this->maxHp;
+const Health State::getHealth() const {
+    return this->health;
 }
 const int State::getDamage() const {
     return this->damage;
 }
-UnitClass State::getTitle() const {
-    return this->title;
+
+void State::takeImpact(Modifier& mod) {
+    this->health += mod;
 }
 
-void State::calcHp(int points) {
-    points += this->hp;
-    if ( points < 0 ) {
-        points = 0;
-    }
-    if ( points > this->maxHp ) {
-        points = this->maxHp;
-    }
-    this->hp = points;
-}
-
-void State::setHp(int hp) {
-    this->hp = hp;
-}
-
-void State::takeDamage(int damage) {
-    this->calcHp(-damage);
-}
-
-void State::takeMagDamage(int damage) {
-    this->takeDamage(damage);
-}
-
-void State::restoreHp(int points) {
-    this->calcHp(points);
+void State::takeMagDamage(Modifier& mod) {
+    this->takeImpact(mod);
 }

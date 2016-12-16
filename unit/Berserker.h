@@ -13,7 +13,7 @@ class Berserker : public Soldier {
         Berserker(UnitClass title=UnitClass::BERSERKER, int maxHp=(int)Hp::BERSERKER, int damage=(int)Dmg::BERSERKER);
         virtual ~Berserker();
         
-        void takeMagDamage(int damage);
+        void takeMagDamage(Modifier& mod);
 };
 
 #endif //BERSERKER_H

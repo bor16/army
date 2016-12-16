@@ -1,7 +1,8 @@
 #include "Caster.h"
+#include "../modifier/Damage.h"
 
 Caster::Caster(UnitClass title, int maxHp, int damage, int maxMana) : Soldier(title, maxHp, damage) {
-    this->state = new CasterState(title, maxHp, damage, maxMana);
+    this->state = new CasterState(title, Health(maxHp), damage, Energy(maxMana));
     this->spellbook = new std::map<SpellTitle, Spell*>();
     
     this->spellbook->insert(std::pair<SpellTitle, Spell*>(SpellTitle::FLAME_STRIKE, new FlameStrike()));
@@ -13,24 +14,16 @@ Caster::~Caster() {
     delete spellbook;
 }
 
-const int Caster::getMana() const {
-    return state->getMana();
-}
-const int Caster::getMaxMana() const {
-    return state->getMaxMana();
+const Energy Caster::getEnergy() const {
+    return state->getEnergy();
 }
 const std::map<SpellTitle, Spell*>& Caster::openSpellbook() const {
     return *spellbook;
 }
 
-void Caster::reduceMana(int cost) {
+void Caster::takeEnergyImpact(Modifier& mod) {
     this->ensureIsAlive();
-    this->state->reduceMana(cost);
-}
-
-void Caster::restoreMana(int points) {
-    this->ensureIsAlive();
-    this->state->restoreMana(points);
+    this->state->takeEnergyImpact(mod);
 }
 
 Spell& Caster::findSpell(SpellTitle title) const {
@@ -45,19 +38,27 @@ Spell& Caster::findSpell(SpellTitle title) const {
 }
 
 void Caster::cast(Harm& spell, Unit& target) {
+    Damage dmg;
+    
     this->ensureIsAlive();
     
-    this->reduceMana(spell.getCost());
+    dmg = spell.getCost();
+    
+    this->takeEnergyImpact(dmg);
     spell.action(target, 1);
     
-    if ( target.getHp() != 0 ) {
+    if ( target.getHealth() != 0 ) {
         target.counterAttack(*this, target);
     }
 }
 
 void Caster::cast(Restore& spell, Unit& target) {
+    Damage dmg;
+    
     this->ensureIsAlive();
     
-    this->reduceMana(spell.getCost());
+    dmg = spell.getCost();
+    
+    this->takeEnergyImpact(dmg);
     spell.action(target, 2);
 }

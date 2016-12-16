@@ -1,6 +1,6 @@
 #include "Unit.h"
 
-Unit::Unit(State* state) : state(state), action(new Action()) {}
+Unit::Unit(State* state, Action* action) : state(state), action(action) {}
 
 Unit::~Unit() {
     delete state;
@@ -8,7 +8,7 @@ Unit::~Unit() {
 }
 
 void Unit::ensureIsAlive() {
-    if ( this->state->getHp() == 0 ) {
+    if ( this->getHealth() == 0 ) {
         throw DeadActionException();
     }
 }
@@ -16,23 +16,17 @@ void Unit::ensureIsAlive() {
 UnitClass Unit::getTitle() const {
     return this->state->getTitle();
 }
-const int Unit::getHp() const {
-    return this->state->getHp();
-}
-const int Unit::getMaxHp() const {
-    return this->state->getMaxHp();
+const Health Unit::getHealth() const {
+    return this->state->getHealth();
 }
 const int Unit::getDamage() const {
     return this->state->getDamage();
 }
-void Unit::takeDamage(int damage) {
-    this->state->takeDamage(damage);
+void Unit::takeImpact(Modifier& mod) {
+    this->state->takeImpact(mod);
 }
-void Unit::takeMagDamage(int damage) {
-    this->state->takeMagDamage(damage);
-}
-void Unit::restoreHp(int points) {
-    this->state->restoreHp(points);
+void Unit::takeMagDamage(Modifier& mod) {
+    this->state->takeMagDamage(mod);
 }
 
 void Unit::attack(Unit& target, Unit& attacker) {

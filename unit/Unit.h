@@ -4,9 +4,9 @@
 #include <iostream>
 #include <set>
 #include "../action/Action.h"
-#include "../state/State.h"
 #include "../interface/IObserver.h"
 #include "../interface/ISubject.h"
+#include "../state/State.h"
 
 class Unit : public ISubject {
     protected:
@@ -18,17 +18,15 @@ class Unit : public ISubject {
         void ensureIsAlive();
         
     public:
-        Unit(State* state);
+        Unit(State* state, Action* action);
         virtual ~Unit();
         
         //state
         UnitClass getTitle() const;
-        /*virtual */const int getHp() const;
-        const int getMaxHp() const;
+        const Health getHealth() const;
         const int getDamage() const;
-        virtual void takeDamage(int damage);
-        virtual void takeMagDamage(int damage);
-        virtual void restoreHp(int points);
+        virtual void takeImpact(Modifier& mod);
+        virtual void takeMagDamage(Modifier& mod);
         
         //action
         virtual void attack(Unit& target, Unit& attacker);

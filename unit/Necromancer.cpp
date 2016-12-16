@@ -1,4 +1,5 @@
 #include "Necromancer.h"
+#include "../modifier/Aid.h"
 
 Necromancer::Necromancer(UnitClass title, int maxHp, int damage, int maxMana) : Wizard(title, maxHp, damage, maxMana) {
     this->action = new NecromancerAction();
@@ -23,7 +24,11 @@ void Necromancer::counterAttack(Unit& target, Unit& attacker) {
 }
 
 void Necromancer::update() {
-    this->restoreHp(20);
+    Aid aid;
+    
+    aid = 20;
+    
+    this->takeImpact(aid);
 }
 
 void Necromancer::attachSubject(ISubject* subject) {

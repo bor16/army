@@ -1,8 +1,8 @@
 #include "WerewolfState.h"
 
-WerewolfState::WerewolfState(UnitClass title, int maxHp, int damage) : State(title, maxHp, damage) {
-    this->active = new State(title, maxHp, damage);
-    this->alternative = new WolfState(title, maxHp*2, damage*2);
+WerewolfState::WerewolfState(UnitClass title, int maxHp, int damage) : State(title, Health(maxHp), damage) {
+    this->active = new State(title, Health(maxHp), damage);
+    this->alternative = new WolfState(title, Health(maxHp*2), damage*2);
 }
 
 WerewolfState::~WerewolfState() {
@@ -10,8 +10,8 @@ WerewolfState::~WerewolfState() {
     delete alternative;
 }
 
-const int WerewolfState::getHp() const {
-    return active->getHp();
+const Health WerewolfState::getHealth() const {
+    return active->getHealth();
 }
 
 void WerewolfState::shapeShift() {
@@ -21,17 +21,12 @@ void WerewolfState::shapeShift() {
     alternative = tmp;
 }
 
-void WerewolfState::takeDamage(int damage) {
-    this->active->takeDamage(damage);
-    this->alternative->takeDamage(damage);
+void WerewolfState::takeImpact(Modifier& mod) {
+    this->active->takeImpact(mod);
+    this->alternative->takeImpact(mod);
 }
 
-void WerewolfState::takeMagDamage(int damage) {
-    this->active->takeMagDamage(damage);
-    this->alternative->takeMagDamage(damage);
-}
-
-void WerewolfState::restoreHp(int points) {
-    this->active->restoreHp(points);
-    this->alternative->restoreHp(points);
+void WerewolfState::takeMagDamage(Modifier& mod) {
+    this->active->takeMagDamage(mod);
+    this->alternative->takeMagDamage(mod);
 }

@@ -8,8 +8,8 @@ Werewolf::~Werewolf() {
     delete state;
 }
 
-const int Werewolf::getHp() const {
-    return this->state->getHp();
+const Health Werewolf::getHealth() const {
+    return this->state->getHealth();
 }
 
 void Werewolf::shapeShift() {
@@ -17,15 +17,10 @@ void Werewolf::shapeShift() {
     this->state->shapeShift();
 }
 
-void Werewolf::takeDamage(int damage) {
-    this->state->takeDamage(damage);
+void Werewolf::takeImpact(Modifier& mod) {
+    this->state->takeImpact(mod);
 }
 
-void Werewolf::takeMagDamage(int damage) {
-    this->state->takeMagDamage(damage);
+void Werewolf::takeMagDamage(Modifier& mod) {
+    this->state->takeMagDamage(mod);
 }
-
-void Werewolf::restoreHp(int points) {
-    this->state->restoreHp(points);
-}
-
