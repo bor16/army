@@ -1,8 +1,8 @@
 #include "WerewolfState.h"
 
-WerewolfState::WerewolfState(UnitClass title, int maxHp, int damage) : State(title, Health(maxHp), damage) {
-    this->active = new State(title, Health(maxHp), damage);
-    this->alternative = new WolfState(title, Health(maxHp*2), damage*2);
+WerewolfState::WerewolfState(UnitClass title, int maxHp, int damage) : State(title, new Health(maxHp), damage) {
+    this->active = new State(title, new Health(maxHp), damage);
+    this->alternative = new WolfState(title, new Health(maxHp*2), damage*2);
 }
 
 WerewolfState::~WerewolfState() {

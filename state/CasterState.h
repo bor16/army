@@ -7,13 +7,13 @@
 
 class CasterState: public State {
     protected:
-        Energy energy;
+        Energy* energy;
         
     public:
-        CasterState(UnitClass title, Health health, int damage, Energy energy);
+        CasterState(UnitClass title, Health* health, int damage, Energy* energy);
         virtual ~CasterState();
         
-        const Energy getEnergy() const;
+        const Energy& getEnergy() const;
         
         virtual void takeEnergyImpact(Modifier& mod);
 };

@@ -2,7 +2,7 @@
 #include "../modifier/Damage.h"
 
 Caster::Caster(UnitClass title, int maxHp, int damage, int maxMana) : Soldier(title, maxHp, damage) {
-    this->state = new CasterState(title, Health(maxHp), damage, Energy(maxMana));
+    this->state = new CasterState(title, new Health(maxHp), damage, new Energy(maxMana));
     this->spellbook = new std::map<SpellTitle, Spell*>();
     
     this->spellbook->insert(std::pair<SpellTitle, Spell*>(SpellTitle::FLAME_STRIKE, new FlameStrike()));
@@ -14,7 +14,7 @@ Caster::~Caster() {
     delete spellbook;
 }
 
-const Energy Caster::getEnergy() const {
+const Energy& Caster::getEnergy() const {
     return state->getEnergy();
 }
 const std::map<SpellTitle, Spell*>& Caster::openSpellbook() const {

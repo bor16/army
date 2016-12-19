@@ -23,7 +23,7 @@ class Unit : public ISubject {
         
         //state
         UnitClass getTitle() const;
-        const Health getHealth() const;
+        const Health& getHealth() const;
         const int getDamage() const;
         virtual void takeImpact(Modifier& mod);
         virtual void takeMagDamage(Modifier& mod);

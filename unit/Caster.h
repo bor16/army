@@ -18,7 +18,7 @@ class Caster : public Soldier {
         Caster(UnitClass title, int maxHp, int damage, int maxMana);
         virtual ~Caster();
         
-        const Energy getEnergy() const;
+        const Energy& getEnergy() const;
         const std::map<SpellTitle, Spell*>& openSpellbook() const;
         
         virtual void takeEnergyImpact(Modifier& mod);

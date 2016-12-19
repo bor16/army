@@ -1,6 +1,6 @@
 #include "BerserkerState.h"
 
-BerserkerState::BerserkerState(UnitClass title, Health health, int damage) : State(title, health, damage) {}
+BerserkerState::BerserkerState(UnitClass title, Health* health, int damage) : State(title, health, damage) {}
 
 BerserkerState::~BerserkerState() {}
 

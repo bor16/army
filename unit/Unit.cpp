@@ -1,10 +1,15 @@
 #include "Unit.h"
 
-Unit::Unit(State* state, Action* action) : state(state), action(action) {}
+Unit::Unit(State* state, Action* action) : state(state), action(action) {
+    this->observers = NULL;
+}
 
 Unit::~Unit() {
     delete state;
     delete action;
+    if ( observers != NULL ) {
+        delete observers;
+    }
 }
 
 void Unit::ensureIsAlive() {
@@ -16,7 +21,7 @@ void Unit::ensureIsAlive() {
 UnitClass Unit::getTitle() const {
     return this->state->getTitle();
 }
-const Health Unit::getHealth() const {
+const Health& Unit::getHealth() const {
     return this->state->getHealth();
 }
 const int Unit::getDamage() const {

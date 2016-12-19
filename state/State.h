@@ -9,15 +9,15 @@
 class State {
     protected:
         UnitClass title;
-        Health health;
+        Health* health;
         int damage;
         
     public:
-        State(UnitClass title, Health health, int damage);
+        State(UnitClass title, Health* health, int damage);
         virtual ~State();
         
         UnitClass getTitle() const;
-        const Health getHealth() const;
+        const Health& getHealth() const;
         const int getDamage() const;
         
         virtual void takeImpact(Modifier& mod);
