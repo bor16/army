@@ -11,6 +11,11 @@ Caster::Caster(UnitClass title, int maxHp, int damage, int maxMana) : Soldier(ti
 
 Caster::~Caster() {
     delete state;
+    
+    std::map<SpellTitle, Spell*>::iterator it;
+    for ( it = this->spellbook->begin(); it != this->spellbook->end(); ++it ) {
+        delete it->second;
+    }
     delete spellbook;
 }
 

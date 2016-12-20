@@ -47,8 +47,8 @@ void Health::operator=(int points) {
     setPoints(points);
 }
 
-void Health::operator+=(const Modifier& modifier) {
-    int result = this->points + modifier.getPoints();
+void Health::operator+=(const Modifier& mod) {
+    int result = this->points + mod.getPoints();
     
     this->points = validatePoints(result);
 }
