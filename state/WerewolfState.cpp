@@ -1,24 +1,26 @@
 #include "WerewolfState.h"
 
 WerewolfState::WerewolfState(UnitClass title, int maxHp, int damage) : State(title, new Health(maxHp), damage) {
-    this->active = new State(title, new Health(maxHp), damage);
-    this->alternative = new WolfState(title, new Health(maxHp*2), damage*2);
+    this->active = std::unique_ptr<State>(new State(title, new Health(maxHp), damage));
+    this->alternative = std::unique_ptr<State>(new WolfState(title, new Health(maxHp*2), damage*2));
 }
 
-WerewolfState::~WerewolfState() {
-    delete active;
-    delete alternative;
-}
+WerewolfState::~WerewolfState() {}
 
 const Health WerewolfState::getHealth() const {
     return active->getHealth();
 }
 
 void WerewolfState::shapeShift() {
-    State* tmp = active;
+    std::unique_ptr<State> tmp(nullptr);
     
-    active = alternative;
-    alternative = tmp;
+    swap(tmp, active);
+    swap(active, alternative);
+    swap(alternative, tmp);
+    
+    // tmp = std::move(active);
+    // active = std::move(alternative);
+    // alternative = std::move(tmp);
 }
 
 void WerewolfState::takeImpact(Modifier& mod) {

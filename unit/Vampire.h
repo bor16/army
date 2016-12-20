@@ -7,7 +7,7 @@
 
 class Vampire : public Soldier {
     protected:
-        VampireAction* action;
+        std::unique_ptr<VampireAction> action;
         
     public:
         Vampire(UnitClass title=UnitClass::VAMPIRE, int maxHp=(int)Hp::VAMPIRE, int damage=(int)Dmg::VAMPIRE);

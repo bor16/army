@@ -7,7 +7,7 @@
 
 class Berserker : public Soldier {
     protected:
-        BerserkerState* state;
+        std::unique_ptr<BerserkerState> state;
     
     public:
         Berserker(UnitClass title=UnitClass::BERSERKER, int maxHp=(int)Hp::BERSERKER, int damage=(int)Dmg::BERSERKER);

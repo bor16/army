@@ -1,12 +1,10 @@
 #include "Werewolf.h"
 
 Werewolf::Werewolf(UnitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
-    this->state = new WerewolfState(title, maxHp, damage);
+    this->state = std::unique_ptr<WerewolfState>(new WerewolfState(title, maxHp, damage));
 }
 
-Werewolf::~Werewolf() {
-    delete state;
-}
+Werewolf::~Werewolf() {}
 
 const Health Werewolf::getHealth() const {
     return this->state->getHealth();

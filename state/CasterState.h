@@ -7,7 +7,7 @@
 
 class CasterState: public State {
     protected:
-        Energy* energy;
+        std::unique_ptr<Energy> energy;
         
     public:
         CasterState(UnitClass title, Health* health, int damage, Energy* energy);

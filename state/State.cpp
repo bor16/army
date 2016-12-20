@@ -2,9 +2,7 @@
 
 State::State(UnitClass title, Health* health, int damage) : title(title), health(health), damage(damage) {}
 
-State::~State() {
-    delete health;
-}
+State::~State() {}
 
 UnitClass State::getTitle() const {
     return this->title;

@@ -7,7 +7,7 @@
 
 class Necromancer : public Wizard, public IObserver {
     protected:
-        NecromancerAction* action;
+        std::unique_ptr<NecromancerAction> action;
         std::set<ISubject*>* subjects;
         
     public:

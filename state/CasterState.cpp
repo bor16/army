@@ -2,9 +2,7 @@
 
 CasterState::CasterState(UnitClass title, Health* health, int damage, Energy* energy) : State(title, health, damage), energy(energy) {}
 
-CasterState::~CasterState() {
-    delete energy;
-}
+CasterState::~CasterState() {}
 
 const Energy& CasterState::getEnergy() const {
     return *(this->energy);

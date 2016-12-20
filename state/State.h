@@ -2,6 +2,7 @@
 #define STATE_H
 
 #include <iostream>
+#include <memory>
 #include "StateProperties.h"
 #include "../exception/Exception.h"
 #include "../field/Health.h"
@@ -9,7 +10,7 @@
 class State {
     protected:
         UnitClass title;
-        Health* health;
+        std::unique_ptr<Health> health;
         int damage;
         
     public:

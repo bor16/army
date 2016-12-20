@@ -7,7 +7,7 @@
 
 class Rogue : public Soldier {
     protected:
-        RogueAction* action;
+        std::unique_ptr<RogueAction> action;
     
     public:
         Rogue(UnitClass title=UnitClass::ROGUE, int maxHp=(int)Hp::ROGUE, int damage=(int)Dmg::ROGUE);

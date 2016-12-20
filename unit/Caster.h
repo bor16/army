@@ -11,7 +11,7 @@
 
 class Caster : public Soldier {
     protected:
-        CasterState* state;
+        std::unique_ptr<CasterState> state;
         std::map<SpellTitle, Spell*>* spellbook;
     
     public:

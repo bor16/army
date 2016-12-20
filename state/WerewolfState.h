@@ -7,8 +7,8 @@
 
 class WerewolfState : public State {
     protected:
-        State* active;
-        State* alternative;
+        std::unique_ptr<State> active;
+        std::unique_ptr<State> alternative;
         
     public:
         WerewolfState(UnitClass title, int maxHp, int damage);

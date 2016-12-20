@@ -5,8 +5,6 @@ Unit::Unit(State* state, Action* action) : state(state), action(action) {
 }
 
 Unit::~Unit() {
-    delete state;
-    delete action;
     if ( observers != NULL ) {
         delete observers;
     }

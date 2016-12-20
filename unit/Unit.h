@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <set>
+#include <memory>
 #include "../action/Action.h"
 #include "../interface/IObserver.h"
 #include "../interface/ISubject.h"
@@ -10,8 +11,8 @@
 
 class Unit : public ISubject {
     protected:
-        State* state;
-        Action* action;
+        std::unique_ptr<State> state;
+        std::unique_ptr<Action> action;
         
         std::set<IObserver*>* observers;
         

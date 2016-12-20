@@ -1,12 +1,10 @@
 #include "Vampire.h"
 
 Vampire::Vampire(UnitClass title, int maxHp, int damage) : Soldier(title, maxHp, damage) {
-    this->action = new VampireAction();
+    this->action = std::unique_ptr<VampireAction>(new VampireAction());
 }
 
-Vampire::~Vampire() {
-    delete action;
-}
+Vampire::~Vampire() {}
 
 void Vampire::attack(Unit& target, Unit& attacker) {
     this->ensureIsAlive();

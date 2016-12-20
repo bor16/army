@@ -7,7 +7,7 @@
 
 class Werewolf : public Soldier {
     protected:
-        WerewolfState* state;
+        std::unique_ptr<WerewolfState> state;
         
     public:
         Werewolf(UnitClass title=UnitClass::WEREWOLF, int maxHp=(int)Hp::WEREWOLF, int damage=(int)Dmg::WEREWOLF);
