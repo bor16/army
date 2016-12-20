@@ -47,8 +47,18 @@ void Health::operator=(int points) {
     setPoints(points);
 }
 
-void Health::operator+=(const Modifier& modifier) {
-    this->points += modifier.getPoints();
+void Health::operator+=(const Modifier& mod) {
+    int result = this->points + mod.getPoints();
+    
+    this->points = validatePoints(result);
+}
+
+const bool Health::operator==(int value) const {
+    return this->points == value;
+}
+
+const bool Health::operator!=(int value) const {
+    return !(*this == value);
 }
 
 std::ostream& operator<<(std::ostream& out, const Health& health) {

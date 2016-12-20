@@ -1,31 +1,15 @@
 #include "CasterState.h"
 
-CasterState::CasterState(UnitClass title, int maxHp, int damage, int maxMana) : State(title, maxHp, damage), mana(maxMana), maxMana(maxMana) {}
+CasterState::CasterState(UnitClass title, Health* health, int damage, Energy* energy) : State(title, health, damage), energy(energy) {}
 
-CasterState::~CasterState() {}
-
-const int CasterState::getMana() const {
-    return this->mana;
-}
-const int CasterState::getMaxMana() const {
-    return this->maxMana;
+CasterState::~CasterState() {
+    delete energy;
 }
 
-void CasterState::calcMana(int points) {
-    points += this->mana;
-    if ( points < 0 ) {
-        points = 0;
-    }
-    if ( points > this->maxMana ) {
-        points = this->maxMana;
-    }
-    this->mana = points;
+const Energy& CasterState::getEnergy() const {
+    return *(this->energy);
 }
 
-void CasterState::reduceMana(int cost) {
-    calcMana(-cost);
-}
-
-void CasterState::restoreMana(int points) {
-    calcMana(points);
+void CasterState::takeEnergyImpact(Modifier& mod) {
+    *(this->energy) += mod;
 }

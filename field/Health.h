@@ -24,7 +24,10 @@ class Health {
         void setPoints(int points);
         void operator=(int points);
         
-        void operator+=(const Modifier& modifier);
+        void operator+=(const Modifier& mod);
+        
+        const bool operator==(int value) const;
+        const bool operator!=(int value) const;
 };
 
 std::ostream& operator<<(std::ostream& out, const Health& health);
