@@ -11,7 +11,8 @@ enum class UnitClass {
     HEALER,
     PRIEST,
     WARLOCK,
-    NECROMANCER
+    NECROMANCER,
+    DEMON
 };
 
 enum class Hp {
@@ -24,7 +25,8 @@ enum class Hp {
     HEALER = 40,
     PRIEST = 60,
     WARLOCK = 80,
-    NECROMANCER = 40
+    NECROMANCER = 40,
+    DEMON = 50
 };
 
 enum class Dmg {
@@ -37,7 +39,8 @@ enum class Dmg {
     HEALER = 4,
     PRIEST = 4,
     WARLOCK = 6,
-    NECROMANCER = 4
+    NECROMANCER = 4,
+    DEMON = 6
 };
 
 enum class Mana {

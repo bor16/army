@@ -1,11 +1,11 @@
 #include "Unit.h"
 
 Unit::Unit(State* state, Action* action) : state(state), action(action) {
-    this->observers = NULL;
+    this->observers = nullptr;
 }
 
 Unit::~Unit() {
-    if ( observers != NULL ) {
+    if ( observers != nullptr ) {
         delete observers;
     }
 }
