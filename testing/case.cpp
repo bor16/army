@@ -5,6 +5,8 @@
 #include "../unit/Healer.h"
 #include "../unit/Priest.h"
 #include "../unit/Werewolf.h"
+#include "../unit/Warlock.h"
+#include "../unit/Demon.h"
 // #include "../unit/Necromancer.h"
 #include "../spell/Spell.h"
 #include "../modifier/Aid.h"
@@ -180,4 +182,20 @@ TEST_CASE("test Werewolf", "[Werewolf]") {
     delete wer;
     delete wiz;
     delete sol;
+}
+
+TEST_CASE("test Warlock", "[Warlock]") {
+    Warlock* war = new Warlock();
+    
+    SECTION("default") {
+        war->summonFiend();
+        
+        war->getFiend().attack(*war, war->getFiend());
+        CHECK( war->getHealth().getPoints() == (int)Hp::WARLOCK - (int)Dmg::DEMON );
+        
+        war->dismissFiend();
+        REQUIRE_THROWS_AS( war->getFiend(), NoFiendException );
+    }
+    
+    delete war;
 }

@@ -3,11 +3,11 @@
 
 Necromancer::Necromancer(UnitClass title, int maxHp, int damage, int maxMana) : Wizard(title, maxHp, damage, maxMana) {
     this->action = std::unique_ptr<NecromancerAction>(new NecromancerAction());
-    this->subjects = NULL;
+    this->subjects = nullptr;
 }
 
 Necromancer::~Necromancer() {
-    if ( subjects != NULL ) {
+    if ( subjects != nullptr ) {
         delete subjects;
     }
 }
