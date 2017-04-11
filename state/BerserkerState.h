@@ -3,10 +3,14 @@
 
 #include <iostream>
 #include "State.h"
+#include "../field/BerserkerHealth.h"
 
 class BerserkerState : public State {
+    protected:
+        std::unique_ptr<BerserkerHealth> health;
+    
     public:
-        BerserkerState(UnitClass title, Health* health, int damage);
+        BerserkerState(UnitClass title, int maxHp, int damage);
         virtual ~BerserkerState();
         
         void takeMagDamage(Modifier& mod);

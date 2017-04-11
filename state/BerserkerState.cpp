@@ -1,6 +1,8 @@
 #include "BerserkerState.h"
 
-BerserkerState::BerserkerState(UnitClass title, Health* health, int damage) : State(title, health, damage) {}
+BerserkerState::BerserkerState(UnitClass title, int maxHp, int damage) : State(title, new Health(maxHp), damage) {
+    this->health = std::unique_ptr<BerserkerHealth>(new BerserkerHealth(maxHp));
+}
 
 BerserkerState::~BerserkerState() {}
 
