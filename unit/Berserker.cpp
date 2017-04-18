@@ -6,6 +6,14 @@ Berserker::Berserker(UnitClass title, int maxHp, int damage) : Soldier(title, ma
 
 Berserker::~Berserker() {}
 
+void Berserker::takeImpact(Modifier& mod) {
+    this->state->takeImpact(mod);
+}
+
+void Berserker::takeImpact(MagDamage& mod) {
+    this->state->takeImpact(mod);
+}
+
 void Berserker::takeMagDamage(Modifier& mod) {
     this->state->takeMagDamage(mod);
 }

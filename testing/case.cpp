@@ -11,6 +11,7 @@
 #include "../spell/Spell.h"
 #include "../modifier/Aid.h"
 #include "../modifier/Damage.h"
+#include "../modifier/MagDamage.h"
 #include "catch.hpp"
 
 TEST_CASE("test Soldier", "[Soldier]") {
@@ -90,9 +91,20 @@ TEST_CASE("test Rogue", "[Rogue]") {
 TEST_CASE("test Berserker", "[Berserker]") {
     Berserker* ber = new Berserker();
     Damage dmg = Damage(16);
+    Aid aid = Aid(1000);
+    MagDamage mdmg = MagDamage(12);
     
-    SECTION("TakeMagDamage") {
+    SECTION("takeMagDamage") {
         ber->takeMagDamage(dmg);
+        REQUIRE( ber->getHealth().getPoints() == (int)Hp::BERSERKER );
+        
+        ber->takeImpact(dmg);
+        ber->takeImpact(aid);
+        REQUIRE( ber->getHealth().getPoints() == (int)Hp::BERSERKER );
+    }
+    
+    SECTION("takeImpact(MagDamage)") {
+        ber->takeImpact(mdmg);
         REQUIRE( ber->getHealth().getPoints() == (int)Hp::BERSERKER );
     }
     

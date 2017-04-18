@@ -11,6 +11,7 @@ class BerserkerHealth : public Health {
         BerserkerHealth(int points, int limit);
         virtual ~BerserkerHealth();
         
+        void operator+=(const Modifier& mod);
         void operator+=(const MagDamage& mod);
 };
 
