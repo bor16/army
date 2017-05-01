@@ -28,6 +28,11 @@ void WerewolfState::takeImpact(Modifier& mod) {
     this->alternative->takeImpact(mod);
 }
 
+void WerewolfState::takeImpact(MagDamage& mod) {
+    this->active->takeImpact(mod);
+    this->alternative->takeImpact(mod);
+}
+
 void WerewolfState::takeMagDamage(Modifier& mod) {
     this->active->takeMagDamage(mod);
     this->alternative->takeMagDamage(mod);

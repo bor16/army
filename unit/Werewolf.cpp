@@ -19,6 +19,10 @@ void Werewolf::takeImpact(Modifier& mod) {
     this->state->takeImpact(mod);
 }
 
+void Werewolf::takeImpact(MagDamage& mod) {
+    this->state->takeImpact(mod);
+}
+
 void Werewolf::takeMagDamage(Modifier& mod) {
     this->state->takeMagDamage(mod);
 }

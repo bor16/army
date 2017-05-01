@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Soldier.h"
 #include "../state/WerewolfState.h"
+#include "../modifier/MagDamage.h"
 
 class Werewolf : public Soldier {
     protected:
@@ -18,6 +19,7 @@ class Werewolf : public Soldier {
         void shapeShift();
         
         void takeImpact(Modifier& mod);
+        void takeImpact(MagDamage& mod);
         void takeMagDamage(Modifier& mod);
 };
 

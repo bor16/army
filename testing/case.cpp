@@ -191,6 +191,20 @@ TEST_CASE("test Werewolf", "[Werewolf]") {
         CHECK( wer->getHealth().getPoints() == ((int)Hp::WEREWOLF - (int)Dmg::SOLDIER*2) );
     }
     
+    SECTION("shapeShift + magDamage") {
+        REQUIRE( wer->getHealth().getPoints() == (int)Hp::WEREWOLF );
+        
+        wiz->cast(dynamic_cast<Harm&>(wiz->findSpell(SpellTitle::FLAME_STRIKE)), *wer);
+        REQUIRE( wer->getHealth().getPoints() == (int)Hp::WEREWOLF - (int)Power::FLAME_STRIKE );
+        
+        wer->takeImpact(aid);
+        REQUIRE( wer->getHealth().getPoints() == (int)Hp::WEREWOLF );
+        wer->shapeShift();
+        REQUIRE( wer->getHealth().getPoints() == (int)Hp::WEREWOLF*2 );
+        wiz->cast(dynamic_cast<Harm&>(wiz->findSpell(SpellTitle::FLAME_STRIKE)), *wer);
+        REQUIRE( wer->getHealth().getPoints() == (int)Hp::WEREWOLF*2 - (int)Power::FLAME_STRIKE*2 );
+    }
+    
     delete wer;
     delete wiz;
     delete sol;
