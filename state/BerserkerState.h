@@ -13,6 +13,8 @@ class BerserkerState : public State {
         BerserkerState(UnitClass title, int maxHp, int damage);
         virtual ~BerserkerState();
         
+        const Health& getHealth() const;
+        
         void takeImpact(Modifier& mod);
         void takeImpact(MagDamage& mod);
         void takeMagDamage(Modifier& mod);

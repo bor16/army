@@ -6,6 +6,10 @@ Berserker::Berserker(UnitClass title, int maxHp, int damage) : Soldier(title, ma
 
 Berserker::~Berserker() {}
 
+const Health& Berserker::getHealth() const {
+    return this->state->getHealth();
+}
+
 void Berserker::takeImpact(Modifier& mod) {
     this->state->takeImpact(mod);
 }

@@ -14,6 +14,8 @@ class Berserker : public Soldier {
         Berserker(UnitClass title=UnitClass::BERSERKER, int maxHp=(int)Hp::BERSERKER, int damage=(int)Dmg::BERSERKER);
         virtual ~Berserker();
         
+        const Health& getHealth() const;
+        
         void takeImpact(Modifier& mod);
         void takeImpact(MagDamage& mod);
         void takeMagDamage(Modifier& mod);

@@ -90,15 +90,15 @@ TEST_CASE("test Rogue", "[Rogue]") {
 
 TEST_CASE("test Berserker", "[Berserker]") {
     Berserker* ber = new Berserker();
+    Wizard* wiz = new Wizard();
     Damage dmg = Damage(16);
     Aid aid = Aid(1000);
     MagDamage mdmg = MagDamage(12);
     
-    SECTION("takeMagDamage") {
-        ber->takeMagDamage(dmg);
-        REQUIRE( ber->getHealth().getPoints() == (int)Hp::BERSERKER );
-        
+    SECTION("takeImpact") {
         ber->takeImpact(dmg);
+        REQUIRE( ber->getHealth().getPoints() == (int)Hp::BERSERKER + dmg.getPoints() );
+        
         ber->takeImpact(aid);
         REQUIRE( ber->getHealth().getPoints() == (int)Hp::BERSERKER );
     }
@@ -106,9 +106,13 @@ TEST_CASE("test Berserker", "[Berserker]") {
     SECTION("takeImpact(MagDamage)") {
         ber->takeImpact(mdmg);
         REQUIRE( ber->getHealth().getPoints() == (int)Hp::BERSERKER );
+        
+        wiz->cast(dynamic_cast<Harm&>(wiz->findSpell(SpellTitle::FLAME_STRIKE)), *ber);
+        REQUIRE( ber->getHealth().getPoints() == (int)Hp::BERSERKER );
     }
     
     delete ber;
+    delete wiz;
 }
 
 TEST_CASE("test Wizard", "[Wizard]") {

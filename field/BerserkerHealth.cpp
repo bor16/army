@@ -12,5 +12,5 @@ void BerserkerHealth::operator+=(const Modifier& mod) {
 }
 
 void BerserkerHealth::operator+=(const MagDamage& mod) {
-    std::cout << "F#!K you wizard!_____________" << std::endl;
+    std::cout << "F#!K you wizard!" << std::endl;
 }
